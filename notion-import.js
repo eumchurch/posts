@@ -44,33 +44,45 @@ const n2m = new NotionToMarkdown({ notionClient: notion });
     const id = r.id;
     // date
     let date = moment(r.created_time).format("YYYY-MM-DD");
-    let pdate = r.properties?.["날짜"]?.["date"]?.["start"];
+    let pdate = r.properties?.["date"]?.["date"]?.["start"];
     if (pdate) {
       date = moment(pdate).format("YYYY-MM-DD");
     }
     // title
     let title = id;
-    let ptitle = r.properties?.["게시물"]?.["title"];
+    let ptitle = r.properties?.["title"]?.["title"];
     if (ptitle?.length > 0) {
       title = ptitle[0]?.["plain_text"];
     }
-    // tags
-    let tags = [];
-    let ptags = r.properties?.["태그"]?.["multi_select"];
-    for (const t of ptags) {
-      const n = t?.["name"];
-      if (n) {
-        tags.push(n);
-      }
+    // subtitle
+    let subtitle = "";
+    let psubtitle = r.properties?.["subtitle"]?.["title"];
+    if (psubtitle?.length > 0) {
+      subtitle = psubtitle[0]?.["plain_text"];
     }
+    // tags
+    // let tags = [];
+    // let ptags = r.properties?.["태그"]?.["multi_select"];
+    // for (const t of ptags) {
+    //   const n = t?.["name"];
+    //   if (n) {
+    //     tags.push(n);
+    //   }
+    // }
     // categories
     let cats = [];
-    let pcats = r.properties?.["카테고리"]?.["multi_select"];
+    let pcats = r.properties?.["category"]?.["multi_select"];
     for (const t of pcats) {
       const n = t?.["name"];
       if (n) {
         cats.push(n);
       }
+    }
+    // youtube
+    let youtube = "";
+    let pyoutube = r.properties?.["youtube"]?.["title"];
+    if (pyoutube?.length > 0) {
+      youtube = pyoutube[0]?.["plain_text"];
     }
 
     // frontmatter
@@ -94,6 +106,8 @@ const n2m = new NotionToMarkdown({ notionClient: notion });
 layout: post
 date: ${date}
 title: "${title}"${fmtags}${fmcats}
+subtitle: "${subtitle}"
+youtube: "${youtube}"
 ---
 
 `;
