@@ -149,7 +149,7 @@ youtube: "${youtube}"
     );
 
     //writing to file
-    fs.writeFile(path.join(root, ftitle), fm + edited_md, (err) => {
+    fs.writeFile(path.join(root+"/"+cats[0], ftitle), fm + edited_md, (err) => {
       if (err) {
         console.log(err);
       }
