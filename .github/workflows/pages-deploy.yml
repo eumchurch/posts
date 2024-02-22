@@ -31,9 +31,9 @@ jobs:
           done
           rm -rf _posts/*
       
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v3
         with:
-          node-version: "20"
+          node-version: "17"
 
       - run: npm install
 
