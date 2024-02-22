@@ -61,10 +61,12 @@ const n2m = new NotionToMarkdown({ notionClient: notion });
     // tags
     let tags = [];
     let ptags = r.properties?.["tags"]?.["multi_select"];
-    for (const t of ptags) {
-      const n = t?.["name"];
-      if (n) {
-        tags.push(n);
+    if (ptags) {
+      for (const t of ptags) {
+        const n = t?.["name"];
+        if (n) {
+          tags.push(n);
+        }
       }
     }
     // categories
