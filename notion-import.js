@@ -58,15 +58,15 @@ const n2m = new NotionToMarkdown({ notionClient: notion });
     if (psubtitle?.length > 0) {
       subtitle = psubtitle[0]?.["plain_text"];
     }
-    // tags
-    // let tags = [];
-    // let ptags = r.properties?.["태그"]?.["multi_select"];
-    // for (const t of ptags) {
-    //   const n = t?.["name"];
-    //   if (n) {
-    //     tags.push(n);
-    //   }
-    // }
+    tags
+    let tags = [];
+    let ptags = r.properties?.["태그"]?.["multi_select"];
+    for (const t of ptags) {
+      const n = t?.["name"];
+      if (n) {
+        tags.push(n);
+      }
+    }
     // categories
     let cats = [];
     let pcats = r.properties?.["category"]?.["multi_select"];
