@@ -23,8 +23,11 @@ const n2m = new NotionToMarkdown({ notionClient: notion });
 
 (async () => {
   // ensure directory exists
-  const root = "_posts";
-  fs.mkdirSync(root, { recursive: true });
+  fs.mkdirSync("qt", { recursive: true });
+  fs.mkdirSync("sermon", { recursive: true });
+  fs.mkdirSync("ministry", { recursive: true });
+  fs.mkdirSync("bulletin", { recursive: true });
+  fs.mkdirSync("introduction", { recursive: true });
 
   const databaseId = process.env.DATABASE_ID;
   // TODO has_more
@@ -149,7 +152,7 @@ youtube: "${youtube}"
     );
 
     //writing to file
-    fs.writeFile(path.join(root+"/"+cats[0], ftitle), fm + edited_md, (err) => {
+    fs.writeFile(path.join(cats[0], ftitle), fm + edited_md, (err) => {
       if (err) {
         console.log(err);
       }
