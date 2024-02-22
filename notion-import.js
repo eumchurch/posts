@@ -58,7 +58,7 @@ const n2m = new NotionToMarkdown({ notionClient: notion });
     if (psubtitle?.length > 0) {
       subtitle = psubtitle[0]?.["plain_text"];
     }
-    tags
+    // tags
     let tags = [];
     let ptags = r.properties?.["tags"]?.["multi_select"];
     for (const t of ptags) {
