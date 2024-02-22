@@ -60,7 +60,7 @@ const n2m = new NotionToMarkdown({ notionClient: notion });
     }
     tags
     let tags = [];
-    let ptags = r.properties?.["태그"]?.["multi_select"];
+    let ptags = r.properties?.["tags"]?.["multi_select"];
     for (const t of ptags) {
       const n = t?.["name"];
       if (n) {
