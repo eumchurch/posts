@@ -111,7 +111,6 @@ date: ${date}
 title: "${title}"${fmtags}${fmcats}
 subtitle: "${subtitle}"
 author: "${author}"
-youtube: "${youtube}"
 ---
 
 `;
