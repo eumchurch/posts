@@ -23,8 +23,6 @@ const n2m = new NotionToMarkdown({ notionClient: notion });
 
 (async () => {
   // ensure directory exists
-  fs.mkdirSync("qt", { recursive: true });
-  fs.mkdirSync("sermon", { recursive: true });
   fs.mkdirSync("ministry", { recursive: true });
   fs.mkdirSync("bulletin", { recursive: true });
   fs.mkdirSync("introduction", { recursive: true });
