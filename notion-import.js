@@ -79,10 +79,12 @@ const n2m = new NotionToMarkdown({ notionClient: notion });
     // categories
     let cats = [];
     let pcats = r.properties?.["category"]?.["multi_select"];
-    for (const t of pcats) {
-      const n = t?.["name"];
-      if (n) {
-        cats.push(n);
+    if (pcats) {
+      for (const t of pcats) {
+        const n = t?.["name"];
+        if (n) {
+          cats.push(n);
+        }
       }
     }
     // youtube
