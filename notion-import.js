@@ -55,13 +55,13 @@ const n2m = new NotionToMarkdown({ notionClient: notion });
     }
     // subtitle
     let subtitle = "";
-    let psubtitle = r.properties?.["subtitle"]?.["text"];
+    let psubtitle = r.properties?.["subtitle"]?.["title"];
     if (psubtitle?.length > 0) {
       subtitle = psubtitle[0]?.["plain_text"];
     }
     // author
     let author = "";
-    let pauthor = r.properties?.["author"]?.["text"];
+    let pauthor = r.properties?.["author"]?.["rich_text"];
     if (pauthor?.length > 0) {
       author = pauthor[0]?.["plain_text"];
     }
@@ -78,7 +78,7 @@ const n2m = new NotionToMarkdown({ notionClient: notion });
     }
     // categories
     let cats = [];
-    let pcats = r.properties?.["category"]?.["select"];
+    let pcats = r.properties?.["category"]?.["select"]?.[options];
     if (pcats) {
       for (const t of pcats) {
         const n = t?.["name"];
