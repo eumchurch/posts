@@ -61,6 +61,12 @@ const n2m = new NotionToMarkdown({ notionClient: notion });
     if (psubtitle?.length > 0) {
       subtitle = psubtitle[0]?.["plain_text"];
     }
+    // author
+    let author = "";
+    let pauthor = r.properties?.["author"]?.["title"];
+    if (pauthor?.length > 0) {
+      author = pauthor[0]?.["plain_text"];
+    }
     // tags
     let tags = [];
     let ptags = r.properties?.["tags"]?.["multi_select"];
@@ -110,6 +116,7 @@ layout: post
 date: ${date}
 title: "${title}"${fmtags}${fmcats}
 subtitle: "${subtitle}"
+author: "${author}"
 youtube: "${youtube}"
 ---
 
