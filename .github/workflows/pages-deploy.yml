@@ -29,7 +29,9 @@ jobs:
                   rm -rf "$file"
               fi
           done
-          rm -rf _posts/*
+          rm -rf introduction/*
+          rm -rf ministry/*
+          rm -rf bulletin/*
       
       - uses: actions/setup-node@v4
         with:
