@@ -55,13 +55,13 @@ const n2m = new NotionToMarkdown({ notionClient: notion });
     }
     // subtitle
     let subtitle = "";
-    let psubtitle = r.properties?.["subtitle"]?.["title"];
+    let psubtitle = r.properties?.["subtitle"]?.["text"];
     if (psubtitle?.length > 0) {
       subtitle = psubtitle[0]?.["plain_text"];
     }
     // author
     let author = "";
-    let pauthor = r.properties?.["author"]?.["title"];
+    let pauthor = r.properties?.["author"]?.["text"];
     if (pauthor?.length > 0) {
       author = pauthor[0]?.["plain_text"];
     }
@@ -78,7 +78,7 @@ const n2m = new NotionToMarkdown({ notionClient: notion });
     }
     // categories
     let cats = [];
-    let pcats = r.properties?.["category"]?.["multi_select"];
+    let pcats = r.properties?.["category"]?.["select"];
     if (pcats) {
       for (const t of pcats) {
         const n = t?.["name"];
@@ -86,12 +86,6 @@ const n2m = new NotionToMarkdown({ notionClient: notion });
           cats.push(n);
         }
       }
-    }
-    // youtube
-    let youtube = "";
-    let pyoutube = r.properties?.["youtube"]?.["title"];
-    if (pyoutube?.length > 0) {
-      youtube = pyoutube[0]?.["plain_text"];
     }
 
     // frontmatter
