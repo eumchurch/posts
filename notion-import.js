@@ -73,7 +73,7 @@ const n2m = new NotionToMarkdown({ notionClient: notion });
     let tags = [];
     let ptags = r.properties?.["tags"]?.["multi_select"];
     if (ptags) {
-      tags = ["yamm"];
+      tags = [];
       // for (const t of ptags) {
       //   const n = t?.["name"];
       //   if (n) {
@@ -82,10 +82,10 @@ const n2m = new NotionToMarkdown({ notionClient: notion });
       // }
     }
     // categories
-    let cats = ["intro"];
+    let cats = [];
     let pcats = r.properties?.["category"]?.["select"]?.["options"];
     if (pcats) {
-      cats = [String(pcats[0])];
+      cats = ["category"];
       // for (const t of pcats) {
       //   const n = t?.["name"];
       //   if (n) {
