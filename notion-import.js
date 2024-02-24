@@ -74,7 +74,7 @@ const n2m = new NotionToMarkdown({ notionClient: notion });
     let ptags = r.properties?.["tags"]?.["multi_select"];
     if (ptags) {
       tags.push("ttt");
-      tags.push(ptags.length);
+      tags.push(Object.keys(ptags)[0]);
       // for (const t of ptags) {
       //   const n = t?.["name"];
       //   if (n) {
@@ -88,6 +88,7 @@ const n2m = new NotionToMarkdown({ notionClient: notion });
     if (pcats) {
       cats.push("ccc");
       cats.push(pcats.length);
+      cats.push(Object.keys(pcats)[0]);
       // for (const t of pcats) {
       //   const n = t?.["name"];
       //   if (n) {
