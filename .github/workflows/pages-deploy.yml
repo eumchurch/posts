@@ -24,6 +24,7 @@ jobs:
     
       - name: Clean Directory
         run: |
+          rm -rf images/*
           rm -rf introduction/*
           rm -rf ministry/*
           rm -rf bulletin/*
