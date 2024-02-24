@@ -85,7 +85,7 @@ const n2m = new NotionToMarkdown({ notionClient: notion });
     let cats = [];
     let pcats = r.properties?.["category"];
     if (pcats) {
-      cats = [String(pcsts)];
+      cats = [String(pcats)];
       // for (const t of pcats) {
       //   const n = t?.["name"];
       //   if (n) {
