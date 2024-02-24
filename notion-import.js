@@ -29,6 +29,7 @@ const n2m = new NotionToMarkdown({ notionClient: notion });
   
   let rootDirectory = "_posts"
   fs.mkdirSync(rootDirectory, { recursive: true });
+  fs.mkdirSync(rootDirectory+"/images")
 
   const databaseId = process.env.DATABASE_ID;
   // TODO has_more
