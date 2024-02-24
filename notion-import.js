@@ -73,7 +73,7 @@ const n2m = new NotionToMarkdown({ notionClient: notion });
     let tags = [];
     let ptags = r.properties?.["tags"];
     if (ptags) {
-      tags = [ptags.toString()];
+      tags.push("yyy");
       // for (const t of ptags) {
       //   const n = t?.["name"];
       //   if (n) {
@@ -85,7 +85,7 @@ const n2m = new NotionToMarkdown({ notionClient: notion });
     let cats = [];
     let pcats = r.properties?.["category"];
     if (pcats) {
-      cats = [String(pcats)];
+      cats.push(pcats.toString());
       // for (const t of pcats) {
       //   const n = t?.["name"];
       //   if (n) {
