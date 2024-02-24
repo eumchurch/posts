@@ -70,23 +70,25 @@ const n2m = new NotionToMarkdown({ notionClient: notion });
     let tags = [];
     let ptags = r.properties?.["tags"]?.["multi_select"];
     if (ptags) {
-      for (const t of ptags) {
-        const n = t?.["name"];
-        if (n) {
-          tags.push(n);
-        }
-      }
+      tags = [String(ptags[0])];
+      // for (const t of ptags) {
+      //   const n = t?.["name"];
+      //   if (n) {
+      //     tags.push(n);
+      //   }
+      // }
     }
     // categories
     let cats = [];
     let pcats = r.properties?.["category"]?.["select"]?.["options"];
     if (pcats) {
-      for (const t of pcats) {
-        const n = t?.["name"];
-        if (n) {
-          cats.push(n);
-        }
-      }
+      cats = [String(pcats[0])];
+      // for (const t of pcats) {
+      //   const n = t?.["name"];
+      //   if (n) {
+      //     cats.push(n);
+      //   }
+      // }
     }
 
     // frontmatter
@@ -148,12 +150,12 @@ author: "${author}"
         if (p1 === "") res = "";
         else res = `_${p1}_`;
 
-        return `![${index++}](/${filename})${res}`;
+        return `![${index++}](${filename})${res}`;
       }
     );
 
     //writing to file
-    fs.writeFile(path.join("_posts", ftitle), fm + edited_md, (err) => {
+    fs.writeFile(path.join(tags[0], ftitle+".md"), fm + edited_md, (err) => {
       if (err) {
         console.log(err);
       }
