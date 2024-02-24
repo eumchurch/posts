@@ -90,7 +90,7 @@ const n2m = new NotionToMarkdown({ notionClient: notion });
       cats.push("ccc");
       cats.push(pcats.length);
       cats.push(Object.keys(pcats)[1]);
-      cats.push(pcats.["name"]);
+      cats.push(pcats?.["name"]);
       // for (const t of pcats) {
       //   const n = t?.["name"];
       //   if (n) {
