@@ -27,9 +27,9 @@ const n2m = new NotionToMarkdown({ notionClient: notion });
   fs.mkdirSync("bulletin", { recursive: true });
   fs.mkdirSync("introduction", { recursive: true });
   
-  let rootDirectory = "_posts"
-  fs.mkdirSync(rootDirectory, { recursive: true });
-  fs.mkdirSync(rootDirectory+"/images")
+  fs.mkdirSync("ministry/images", { recursive: true });
+  fs.mkdirSync("bulletin/images", { recursive: true });
+  fs.mkdirSync("introduction/images", { recursive: true });
 
   const databaseId = process.env.DATABASE_ID;
   // TODO has_more
@@ -59,7 +59,7 @@ const n2m = new NotionToMarkdown({ notionClient: notion });
     }
     // subtitle
     let subtitle = "";
-    let psubtitle = r.properties?.["subtitle"]?.["title"];
+    let psubtitle = r.properties?.["subtitle"]?.["rich_text"];
     if (psubtitle?.length > 0) {
       subtitle = psubtitle[0]?.["plain_text"];
     }
@@ -78,15 +78,14 @@ const n2m = new NotionToMarkdown({ notionClient: notion });
       }
     }
     // categories
-    let cats = [];
+    let cat = "";
     let pcats = r.properties?.["category"]?.["select"];
     if (pcats) {
-      cats.push(pcats?.["name"]);
+      cat = pcats?.["name"];
     }
 
     // frontmatter
     let fmtags = "";
-    let fmcats = "";
     if (tags.length > 0) {
       fmtags += "\ntags: [";
       for (const t of tags) {
@@ -94,17 +93,12 @@ const n2m = new NotionToMarkdown({ notionClient: notion });
       }
       fmtags += "]";
     }
-    if (cats.length > 0) {
-      fmcats += "\ncategories: [";
-      for (const t of cats) {
-        fmcats += t + ", ";
-      }
-      fmcats += "]";
-    }
+
     const fm = `---
 layout: post
 date: ${date}
-title: "${title}"${fmtags}${fmcats}
+title: "${title}"${fmtags}
+category: "${cat}"
 subtitle: "${subtitle}"
 author: "${author}"
 ---
@@ -120,7 +114,7 @@ author: "${author}"
     let edited_md = md.replace(
       /!\[(.*?)\]\((.*?)\)/g,
       function (match, p1, p2, p3) {
-        const dirname = path.join(rootDirectory+"/images", ftitle);
+        const dirname = path.join(cat + "/images", ftitle);
         if (!fs.existsSync(dirname)) {
           fs.mkdirSync(dirname, { recursive: true });
         }
@@ -148,7 +142,7 @@ author: "${author}"
     );
 
     //writing to file
-    fs.writeFile(path.join(rootDirectory, ftitle+".md"), fm + edited_md, (err) => {
+    fs.writeFile(path.join(cat, ftitle+".md"), fm + edited_md, (err) => {
       if (err) {
         console.log(err);
       }
