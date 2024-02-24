@@ -83,9 +83,9 @@ const n2m = new NotionToMarkdown({ notionClient: notion });
     }
     // categories
     let cats = [];
-    let pcats = r.properties?.["category"];
+    let pcats = r.properties?.["category"]?.["select"];
     if (pcats) {
-      cats.push(pcats.toString());
+      cats.push(pcats.length());
       // for (const t of pcats) {
       //   const n = t?.["name"];
       //   if (n) {
