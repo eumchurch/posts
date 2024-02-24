@@ -152,7 +152,7 @@ author: "${author}"
     );
 
     //writing to file
-    fs.writeFile(path.join(tags[0], ftitle), fm + edited_md, (err) => {
+    fs.writeFile(path.join("_posts", ftitle), fm + edited_md, (err) => {
       if (err) {
         console.log(err);
       }
