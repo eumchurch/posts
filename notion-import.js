@@ -26,7 +26,9 @@ const n2m = new NotionToMarkdown({ notionClient: notion });
   fs.mkdirSync("ministry", { recursive: true });
   fs.mkdirSync("bulletin", { recursive: true });
   fs.mkdirSync("introduction", { recursive: true });
-  fs.mkdirSync("_posts", { recursive: true });
+  
+  let rootDirectory = "_posts"
+  fs.mkdirSync(rootDirectory, { recursive: true });
 
   const databaseId = process.env.DATABASE_ID;
   // TODO has_more
@@ -127,7 +129,7 @@ author: "${author}"
     let edited_md = md.replace(
       /!\[(.*?)\]\((.*?)\)/g,
       function (match, p1, p2, p3) {
-        const dirname = path.join("images", ftitle);
+        const dirname = path.join("${rootDirectory}/images", ftitle);
         if (!fs.existsSync(dirname)) {
           fs.mkdirSync(dirname, { recursive: true });
         }
@@ -150,12 +152,12 @@ author: "${author}"
         if (p1 === "") res = "";
         else res = `_${p1}_`;
 
-        return `![${index++}](${filename})${res}`;
+        return `![${index++}](/_posts/${filename})${res}`;
       }
     );
 
     //writing to file
-    fs.writeFile(path.join("_posts", ftitle+".md"), fm + edited_md, (err) => {
+    fs.writeFile(path.join(rootDirectory, ftitle+".md"), fm + edited_md, (err) => {
       if (err) {
         console.log(err);
       }
