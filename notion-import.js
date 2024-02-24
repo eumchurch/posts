@@ -73,7 +73,7 @@ const n2m = new NotionToMarkdown({ notionClient: notion });
     let tags = [];
     let ptags = r.properties?.["tags"];
     if (ptags) {
-      tags = [ptags]
+      tags = [ptags.toString()];
       // for (const t of ptags) {
       //   const n = t?.["name"];
       //   if (n) {
