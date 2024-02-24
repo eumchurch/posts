@@ -73,30 +73,15 @@ const n2m = new NotionToMarkdown({ notionClient: notion });
     let tags = [];
     let ptags = r.properties?.["tags"]?.["multi_select"];
     if (ptags) {
-      tags.push("ttt");
       for (const t of ptags) {
-        tags.push(t.length);
-        
-        //const n = t?.["name"];
-        //if (n) {
-          //tags.push(n);
-        //}
+        tags.push(t?.["name"]);
       }
     }
     // categories
     let cats = [];
     let pcats = r.properties?.["category"]?.["select"];
     if (pcats) {
-      cats.push("ccc");
-      cats.push(pcats.length);
-      cats.push(Object.keys(pcats)[1]);
       cats.push(pcats?.["name"]);
-      // for (const t of pcats) {
-      //   const n = t?.["name"];
-      //   if (n) {
-      //     cats.push(n);
-      //   }
-      // }
     }
 
     // frontmatter
