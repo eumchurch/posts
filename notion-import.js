@@ -26,6 +26,10 @@ const n2m = new NotionToMarkdown({ notionClient: notion });
   fs.mkdirSync("ministry", { recursive: true });
   fs.mkdirSync("bulletin", { recursive: true });
   fs.mkdirSync("introduction", { recursive: true });
+  
+  let rootDirectory = "_posts"
+  fs.mkdirSync(rootDirectory, { recursive: true });
+  fs.mkdirSync(rootDirectory+"/images")
 
   const databaseId = process.env.DATABASE_ID;
   // TODO has_more
@@ -69,23 +73,25 @@ const n2m = new NotionToMarkdown({ notionClient: notion });
     let tags = [];
     let ptags = r.properties?.["tags"]?.["multi_select"];
     if (ptags) {
-      for (const t of ptags) {
-        const n = t?.["name"];
-        if (n) {
-          tags.push(n);
-        }
-      }
+      tags = [String(ptags[0])];
+      // for (const t of ptags) {
+      //   const n = t?.["name"];
+      //   if (n) {
+      //     tags.push(n);
+      //   }
+      // }
     }
     // categories
     let cats = [];
     let pcats = r.properties?.["category"]?.["select"]?.["options"];
     if (pcats) {
-      for (const t of pcats) {
-        const n = t?.["name"];
-        if (n) {
-          cats.push(n);
-        }
-      }
+      cats = [String(pcats[0])];
+      // for (const t of pcats) {
+      //   const n = t?.["name"];
+      //   if (n) {
+      //     cats.push(n);
+      //   }
+      // }
     }
 
     // frontmatter
@@ -118,13 +124,13 @@ author: "${author}"
     let md = n2m.toMarkdownString(mdblocks)["parent"];
     md = escapeCodeBlock(md);
 
-    const ftitle = `${date}-${title.replaceAll(" ", "-")}.md`;
+    const ftitle = `${date}-${title.replaceAll(" ", "-")}`;
 
     let index = 0;
     let edited_md = md.replace(
       /!\[(.*?)\]\((.*?)\)/g,
       function (match, p1, p2, p3) {
-        const dirname = path.join("assets/img", ftitle);
+        const dirname = path.join("${rootDirectory}/images", ftitle);
         if (!fs.existsSync(dirname)) {
           fs.mkdirSync(dirname, { recursive: true });
         }
@@ -147,12 +153,12 @@ author: "${author}"
         if (p1 === "") res = "";
         else res = `_${p1}_`;
 
-        return `![${index++}](/${filename})${res}`;
+        return `![${index++}](/_posts/${filename})${res}`;
       }
     );
 
     //writing to file
-    fs.writeFile(path.join(tags[0], ftitle), fm + edited_md, (err) => {
+    fs.writeFile(path.join(rootDirectory, ftitle+".md"), fm + edited_md, (err) => {
       if (err) {
         console.log(err);
       }
