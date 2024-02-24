@@ -73,7 +73,7 @@ const n2m = new NotionToMarkdown({ notionClient: notion });
     let tags = [];
     let ptags = r.properties?.["tags"]?.["multi_select"];
     if (ptags) {
-      tags = [String(ptags[0])];
+      tags = ["yamm"];
       // for (const t of ptags) {
       //   const n = t?.["name"];
       //   if (n) {
@@ -82,7 +82,7 @@ const n2m = new NotionToMarkdown({ notionClient: notion });
       // }
     }
     // categories
-    let cats = [];
+    let cats = ["intro"];
     let pcats = r.properties?.["category"]?.["select"]?.["options"];
     if (pcats) {
       cats = [String(pcats[0])];
@@ -130,7 +130,7 @@ author: "${author}"
     let edited_md = md.replace(
       /!\[(.*?)\]\((.*?)\)/g,
       function (match, p1, p2, p3) {
-        const dirname = path.join("${rootDirectory}/images", ftitle);
+        const dirname = path.join(rootDirectory+"/images", ftitle);
         if (!fs.existsSync(dirname)) {
           fs.mkdirSync(dirname, { recursive: true });
         }
