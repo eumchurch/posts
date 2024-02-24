@@ -71,9 +71,9 @@ const n2m = new NotionToMarkdown({ notionClient: notion });
     }
     // tags
     let tags = [];
-    let ptags = r.properties?.["tags"]?.["multi_select"];
+    let ptags = r.properties?.["tags"];
     if (ptags) {
-      tags = [];
+      tags = [ptags]
       // for (const t of ptags) {
       //   const n = t?.["name"];
       //   if (n) {
@@ -83,9 +83,9 @@ const n2m = new NotionToMarkdown({ notionClient: notion });
     }
     // categories
     let cats = [];
-    let pcats = r.properties?.["category"]?.["select"]?.["options"];
+    let pcats = r.properties?.["category"];
     if (pcats) {
-      cats = ["category"];
+      cats = [String(pcsts)];
       // for (const t of pcats) {
       //   const n = t?.["name"];
       //   if (n) {
