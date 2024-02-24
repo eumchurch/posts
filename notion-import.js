@@ -78,7 +78,7 @@ const n2m = new NotionToMarkdown({ notionClient: notion });
     }
     // categories
     let cats = [];
-    let pcats = r.properties?.["category"]?.["select"]?.[options];
+    let pcats = r.properties?.["category"]?.["select"]?.["options"];
     if (pcats) {
       for (const t of pcats) {
         const n = t?.["name"];
