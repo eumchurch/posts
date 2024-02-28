@@ -88,15 +88,16 @@ const n2m = new NotionToMarkdown({ notionClient: notion });
     let pthumbnail = r.properties?.["thumbnail"]?.["files"][0];
     if (pthumbnail) {
       thumbnail += "ok /";
-      thumbnail += pthumbnail.["name"];
-      thumbnail += " ";
-      let file = pthumnail.["file"];
-      if (file) {
-        if file.length > 0 {
-          thumbnail += "/length "
-          thumbnail += file.join();
-        }
-      }
+      thumbnail += JSON.stringify(pthumbnail);
+      // thumbnail += pthumbnail.["name"];
+      // thumbnail += " ";
+      // let file = pthumnail.["file"];
+      // if (file) {
+      //   if file.length > 0 {
+      //     thumbnail += "/length "
+      //     thumbnail += file.join();
+      //   }
+      // }
     }
 
     // frontmatter
