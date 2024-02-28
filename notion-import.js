@@ -87,8 +87,7 @@ const n2m = new NotionToMarkdown({ notionClient: notion });
     let thumbnail = "";
     let pthumbnail = r.properties?.["thumbnail"]?.["files"];
     if (pthumbnail?.length > 0) {
-      thumbnail += "ok ";
-      thumbnail += Object.keys(pthumbnail).join();
+      thumbnail += Object.keys(pthumbnail[0]).join();
 
     }
 
