@@ -85,11 +85,13 @@ const n2m = new NotionToMarkdown({ notionClient: notion });
     }
     // thumbnail
     let thumbnail = "";
-    let pthumbnail = r.properties?.["thumbnail"]?.["files"][0];
-    if (pthumbnail?.length > 0) {
-      thumbnail += "ok ";
+    let pthumbnail = r.properties?.["thumbnail"]?.["files"][0]?.["file"];
+    // if (pthumbnail?.length > 0) {
+      thumbnail += "ok -";
+      thumbnail += pthumbnail;
+      thumbnail += "- ";
       thumbnail += Object.keys(pthumbnail?.["file"]).join();
-    }
+    // }
 
     // frontmatter
     let fmtags = "";
