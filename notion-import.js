@@ -18,6 +18,29 @@ function escapeCodeBlock(body) {
   })
 }
 
+function saveImage(cat, ftitle, index, url) {
+  const dirname = path.join(cat + "/images", ftitle);
+  if (!fs.existsSync(dirname)) {
+    fs.mkdirSync(dirname, { recursive: true });
+  }
+  const filename = path.join(dirname, `${index}.png`);
+
+  axios({
+    method: "get",
+    url: url,
+    responseType: "stream",
+    })
+    .then(function (response) {
+      let file = fs.createWriteStream(`${filename}`);
+      response.data.pipe(file);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+
+  return filename;
+}
+
 // passing notion client to the option
 const n2m = new NotionToMarkdown({ notionClient: notion });
 
@@ -83,21 +106,15 @@ const n2m = new NotionToMarkdown({ notionClient: notion });
     if (pcats) {
       cat = pcats?.["name"];
     }
+
+    const ftitle = `${date}-${title.replaceAll(" ", "-")}`;
+
     // thumbnail
     let thumbnail = "";
     let pthumbnail = r.properties?.["thumbnail"]?.["files"][0];
     if (pthumbnail) {
-      thumbnail += "ok /";
-      thumbnail += JSON.stringify(pthumbnail);
-      // thumbnail += pthumbnail.["name"];
-      // thumbnail += " ";
-      // let file = pthumnail.["file"];
-      // if (file) {
-      //   if file.length > 0 {
-      //     thumbnail += "/length "
-      //     thumbnail += file.join();
-      //   }
-      // }
+      let url = pthumbnail?.["url"];
+      let filename = saveImage(cat, ftitle, 0, url);
     }
 
     // frontmatter
@@ -125,30 +142,11 @@ thumbnail: "${thumbnail}"
     let md = n2m.toMarkdownString(mdblocks)["parent"];
     md = escapeCodeBlock(md);
 
-    const ftitle = `${date}-${title.replaceAll(" ", "-")}`;
-
-    let index = 0;
+    let index = 1;
     let edited_md = md.replace(
       /!\[(.*?)\]\((.*?)\)/g,
       function (match, p1, p2, p3) {
-        const dirname = path.join(cat + "/images", ftitle);
-        if (!fs.existsSync(dirname)) {
-          fs.mkdirSync(dirname, { recursive: true });
-        }
-        const filename = path.join(dirname, `${index}.png`);
-
-        axios({
-          method: "get",
-          url: p2,
-          responseType: "stream",
-        })
-          .then(function (response) {
-            let file = fs.createWriteStream(`${filename}`);
-            response.data.pipe(file);
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
+        let filename = saveImage(cat, ftitle, index, p2);
 
         let res;
         if (p1 === "") res = "";
