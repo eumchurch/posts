@@ -85,10 +85,10 @@ const n2m = new NotionToMarkdown({ notionClient: notion });
     }
     // thumbnail
     let thumbnail = "";
-    let pthumbnail = r.properties?.["thumbnail"]?.["files"];
+    let pthumbnail = r.properties?.["thumbnail"]?.["files"][0];
     if (pthumbnail?.length > 0) {
-      thumbnail += Object.keys(pthumbnail[0]).join();
-
+      thumbnail += "ok ";
+      thumbnail += Object.keys(pthumbnail?.["file"]).join();
     }
 
     // frontmatter
