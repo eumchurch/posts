@@ -87,7 +87,7 @@ const n2m = new NotionToMarkdown({ notionClient: notion });
     let thumbnail = "";
     let pthumbnail = r.properties?.["thumbnail"]?.["files"];
     if (pthumbnail?.length > 0) {
-      thumbnail = pthumbnail?.keys?.join();
+      thumbnail = pthumbnail?.keys.join();
     }
 
     // frontmatter
