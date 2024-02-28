@@ -90,7 +90,7 @@ const n2m = new NotionToMarkdown({ notionClient: notion });
       thumbnail += "ok -";
       thumbnail += pthumbnail;
       thumbnail += "- ";
-      thumbnail += Object.keys(pthumbnail?.["file"]).join();
+      thumbnail += Object.keys(pthumbnail).join();
     // }
 
     // frontmatter
