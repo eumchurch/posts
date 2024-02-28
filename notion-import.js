@@ -83,6 +83,12 @@ const n2m = new NotionToMarkdown({ notionClient: notion });
     if (pcats) {
       cat = pcats?.["name"];
     }
+    // thumbnail
+    let thumbnail = "";
+    let pthumbnail = r.properties?.["thumbnail"]?.["files"];
+    if (pthumbnail?.length > 0) {
+      thumbnail = pthumbnail?.keys?.join();
+    }
 
     // frontmatter
     let fmtags = "";
@@ -101,6 +107,7 @@ title: "${title}"${fmtags}
 category: "${cat}"
 subtitle: "${subtitle}"
 author: "${author}"
+thumbnail: "${thumbnail}"
 ---
 
 `;
