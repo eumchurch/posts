@@ -24,7 +24,7 @@ function saveImage(cat, ftitle, index, url) {
     fs.mkdirSync(dirname, { recursive: true });
   }
   const filename = path.join(dirname, `${index}.png`);
-
+  console.log("\n " + index + " : " + filename);
   axios({
     method: "get",
     url: url,
@@ -114,7 +114,9 @@ const n2m = new NotionToMarkdown({ notionClient: notion });
     let pthumbnail = r.properties?.["thumbnail"]?.["files"][0];
     if (pthumbnail) {
       let url = pthumbnail?.["url"];
+      console.log("\npthumbnail : " + url);
       let filename = saveImage(cat, ftitle, 0, url);
+      thumbnail = filename;
     }
 
     // frontmatter
