@@ -4,8 +4,6 @@ const moment = require("moment");
 const path = require("path");
 const fs = require("fs");
 const axios = require("axios");
-// or
-// import {NotionToMarkdown} from "notion-to-md";
 
 const notion = new Client({
   auth: process.env.NOTION_TOKEN,
@@ -24,7 +22,6 @@ function saveImage(cat, ftitle, index, url) {
     fs.mkdirSync(dirname, { recursive: true });
   }
   const filename = path.join(dirname, `${index}.png`);
-  console.log("\n " + index + " : " + filename);
   axios({
     method: "get",
     url: url,
@@ -66,7 +63,6 @@ const n2m = new NotionToMarkdown({ notionClient: notion });
     },
   });
   for (const r of response.results) {
-    // console.log(r)
     const id = r.id;
     // date
     let date = moment(r.created_time).format("YYYY-MM-DD");
@@ -114,7 +110,6 @@ const n2m = new NotionToMarkdown({ notionClient: notion });
     let pthumbnail = r.properties?.["thumbnail"]?.["files"][0];
     if (pthumbnail) {
       let url = pthumbnail?.["file"]?.["url"];
-      console.log("\npthumbnail : " + url);
       let filename = saveImage(cat, ftitle, 0, url);
       thumbnail = filename;
     }
@@ -142,7 +137,7 @@ thumbnail: "${thumbnail}"
 `;
     const mdblocks = await n2m.pageToMarkdown(id);
     let md = n2m.toMarkdownString(mdblocks)["parent"];
-    md = escapeCodeBlock(md);
+    // md = escapeCodeBlock(md);
 
     let index = 1;
     let edited_md = md.replace(
