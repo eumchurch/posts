@@ -1,4 +1,4 @@
-name: "Build and Deploy"
+name: "Import notion pages"
 on:
   repository_dispatch:
     types: [RUN_WORKFLOW_DISPATCH]
