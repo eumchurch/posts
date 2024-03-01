@@ -1,14 +1,12 @@
 const fs = require("fs");
-
+const path = require("path");
 const GOOGLE_API_KEY = process.env.GOOGLE_API_KEY;
-const PLAYLIST_ID_SERMON = "PLzCVCPy03Qq1ySW_mrIsXdrrDw35NBRyE";
-const PLAYLIST_ID_QT = "PLzCVCPy03Qq2itb1HzvL5CV-TwTCRfFRA";
-
-const TIMEZONE_OFFSET = 1000 * 60 * 60 * 9;
-const A_DAY_OFFSET = 1000 * 60 * 60 * 24;
 
 const baseurl = 'https://www.googleapis.com/youtube/v3/playlistItems';
-
+const PLAYLIST_ID_SERMON = "PLzCVCPy03Qq1ySW_mrIsXdrrDw35NBRyE";
+const PLAYLIST_ID_QT = "PLzCVCPy03Qq2itb1HzvL5CV-TwTCRfFRA";
+const TIMEZONE_OFFSET = 1000 * 60 * 60 * 9;
+const A_DAY_OFFSET = 1000 * 60 * 60 * 24;
 
 function convertPostDate(publishedAt) {
   let publishedDate = new Date(publishedAt);
