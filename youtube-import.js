@@ -25,7 +25,7 @@ function convertPostDate(publishedAt) {
   return year + "-" + month + "-" + date;
 }
 
-function createMD(date, title, subtitle, category, youtube, description) {
+function createFile(date, title, subtitle, category, youtube, description) {
 
   const fm = `---
 layout: post
@@ -41,17 +41,20 @@ youtube: "${youtube}"
 </div>
 
 `;
-  return fm + description;
+  description = description.replace("\n", "\n\n");
+
+  fs.writeFile(path.join(category, date + "-" + category + ".md"), md, (err) => {
+    if (err) {
+      console.log(err);
+    }
+  });
 }
 
-(async () => {
-  // 주일설교
-  let category = "sermon"
-  fs.mkdirSync(category, { recursive: true });
+function callApi(playlistId) {
 
   const params = {
       key: GOOGLE_API_KEY,
-      playlistId: PLAYLIST_ID_SERMON,
+      playlistId: playlistId,
       maxResults: 20,
       part: "snippet"
   };
@@ -62,23 +65,32 @@ youtube: "${youtube}"
   const data = await res.json();
 
   let items = data?.["items"];
-  
+
+  return items;
+}
+
+(async () => {
+  // 주일설교
+  let category = "sermon"
+  fs.mkdirSync(category, { recursive: true });
+  let items = callApi(PLAYLIST_ID_SERMON);
+
   if (items) {
     for (const item of items) {
       let snippet = item?.["snippet"];
       if (snippet) {
         
         let date = "";
-        let publishedAt = snippet?.["publishedAt"];
-        if (publishedAt) {
-          date = convertPostDate(publishedAt);
-        }
-        let youtube = snippet?.["resourceId"]?.["videoId"];
-
-
         let title = "";
         let subtitle = "";
         let description = snippet?.["description"];
+        let publishedAt = snippet?.["publishedAt"];
+        let youtube = snippet?.["resourceId"]?.["videoId"];
+
+        if (publishedAt) {
+          date = convertPostDate(publishedAt);
+        }
+
         let array = description.split("\n\n");
         if (array.length == 3) {
           title = array[1];
@@ -89,14 +101,7 @@ youtube: "${youtube}"
           throw new Error("An error occured parsing youtube description.");
         }
 
-        let md = createMD(date, title, subtitle, category, youtube, description);
-
-        //writing to file
-        fs.writeFile(path.join(category, date + "-" + category + ".md"), md, (err) => {
-          if (err) {
-            console.log(err);
-          }
-        });
+        createFile(date, title, subtitle, category, youtube, description);
       }
     }
   }
