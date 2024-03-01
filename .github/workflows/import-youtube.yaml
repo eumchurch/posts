@@ -1,6 +1,7 @@
 name: "Import youtube"
 on: 
-  push
+  schedule:
+    - cron: '0 0 * * *'
       
 permissions:
   contents: write
