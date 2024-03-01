@@ -132,7 +132,7 @@ function getQts() {
           } else {
             throw new Error("An error occured parsing date: " + publishedAt);
           }
-          console.log(title + ": " + publishedAt + " > " + date);
+          
           let array = title.split("(");
           if (array.length == 2) {
             array = array[1].split(")");
