@@ -28,7 +28,7 @@ const getData = async() => {
         let videoId = snippet?.["resourceId"]?.["videoId"];
         let description = snippet?.["description"];
 
-        let array = string.split('\n\n');
+        let array = description.split("\n\n");
 
         console.log("publishedAt: " + publishedAt + ", videoId: " + videoId);
 
