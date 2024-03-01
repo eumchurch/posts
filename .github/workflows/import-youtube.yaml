@@ -1,5 +1,7 @@
 name: "Import youtube"
-on: workflow_dispatch
+on: 
+  workflow_dispatch
+  push
       
 permissions:
   contents: write
@@ -33,13 +35,13 @@ jobs:
         env:
           GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
 
-      - uses: stefanzweifel/git-auto-commit-action@v5
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          commit_message: "[배포] Notion 변경 사항 저장"
-          branch: main
-          commit_user_name: importer-bot 🤖
-          commit_user_email: actions@github.com
-          commit_author: importer-bot 🤖 <actions@github.com>
+      # - uses: stefanzweifel/git-auto-commit-action@v5
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #   with:
+      #     commit_message: "[배포] Notion 변경 사항 저장"
+      #     branch: main
+      #     commit_user_name: importer-bot 🤖
+      #     commit_user_email: actions@github.com
+      #     commit_author: importer-bot 🤖 <actions@github.com>
  
