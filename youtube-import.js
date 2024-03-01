@@ -36,6 +36,10 @@ subtitle: "${subtitle}"
 youtube: "${youtube}"
 ---
 
+<div class="youtube margin-large">
+    <iframe src="https://www.youtube.com/embed/${youtube}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
+
 `;
   return fm + description;
 }
