@@ -25,9 +25,18 @@ const getData = async() => {
       let snippet = item?.["snippet"];
       if (snippet) {
         let publishedAt = snippet?.["publishedAt"];
-        let description = snippet?.["description"];
         let videoId = snippet?.["resourceId"]?.["videoId"];
-        console.log("publishedAt: " + publishedAt + ", videoId: " + videoId + ", description: " + description);
+        let description = snippet?.["description"];
+
+        let array = string.split('\n\n');
+
+        console.log("publishedAt: " + publishedAt + ", videoId: " + videoId);
+
+        if array.length == 3 {
+          console.log("  title: " + array[1] + ", subtitle: " + array[0] + ", contents: " + array[2]);
+        } else {
+          console.log("  " + array.length + ", " + array);
+        }
       }
     }
   }
