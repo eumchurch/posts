@@ -23,10 +23,14 @@ const getData = async() => {
     console.log("items ok");
     for (const item of items) {
       let snippet = item?.["snippet"];
-      console.log("snippet ok");
+      if (snippet) {
+        let publishedAt = snippet?.["publishedAt"];
+        let description = snippet?.["description"];
+        let videoId = snippet?.["resourceId"]?.["videoId"];
+        console.log("publishedAt: " + publishedAt + ", videoId: " + videoId + ", description: " + description);
+      }
     }
   }
-  console.log(data);
 };
 
 getData();
