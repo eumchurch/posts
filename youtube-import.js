@@ -24,18 +24,24 @@ const getData = async() => {
     for (const item of items) {
       let snippet = item?.["snippet"];
       if (snippet) {
+        
+        let date = "";
         let publishedAt = snippet?.["publishedAt"];
+        console.log("publishedAt: ");
+        if (publishedAt) {
+          let publishedDate = new date(publishedAt);
+          console.log("  date: " + publishedDate);
+        }
         let videoId = snippet?.["resourceId"]?.["videoId"];
+        console.log("  videoId: " + videoId);
+
         let description = snippet?.["description"];
-
         let array = description.split("\n\n");
-
-        console.log("publishedAt: " + publishedAt + ", videoId: " + videoId);
-
         if (array.length == 3) {
-          console.log("  title: " + array[1] + ", subtitle: " + array[0] + ", contents: " + array[2]);
+          console.log("  title: " + array[1] + ", subtitle: " + array[0]);
+
         } else {
-          console.log("  " + array.length + ", " + array);
+          throw new Error("An error occured parsing youtube description.");
         }
       }
     }
