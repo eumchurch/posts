@@ -92,7 +92,7 @@ youtube: "${youtube}"
         let md = createMD(date, title, subtitle, category, youtube, description);
 
         //writing to file
-        fs.writeFile(path.join(category, date + ".md"), md, (err) => {
+        fs.writeFile(path.join(category, date + "-" + category + ".md"), md, (err) => {
           if (err) {
             console.log(err);
           }
