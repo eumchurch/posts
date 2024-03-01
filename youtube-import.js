@@ -27,9 +27,9 @@ const getData = async() => {
         
         let date = "";
         let publishedAt = snippet?.["publishedAt"];
-        console.log("publishedAt: ");
+        console.log("publishedAt: " + publishedAt);
         if (publishedAt) {
-          let publishedDate = new date(publishedAt);
+          let publishedDate = new Date(publishedAt);
           console.log("  date: " + publishedDate);
         }
         let videoId = snippet?.["resourceId"]?.["videoId"];
