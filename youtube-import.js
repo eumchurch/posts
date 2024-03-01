@@ -17,6 +17,15 @@ const requrl = `${baseurl}?${queryString}`;
 const getData = async() => {
   const res = await fetch(requrl);
   const data = await res.json();
+
+  let items = data?.["items"];
+  if (items) {
+    console.log("items ok");
+    for (const item of items) {
+      let snippet = item?.["snippet"];
+      console.log("snippet ok");
+    }
+  }
   console.log(data);
 };
 
