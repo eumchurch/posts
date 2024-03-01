@@ -137,7 +137,7 @@ thumbnail: "${thumbnail}"
 `;
     const mdblocks = await n2m.pageToMarkdown(id);
     let md = n2m.toMarkdownString(mdblocks)["parent"];
-    // md = escapeCodeBlock(md);
+    md = escapeCodeBlock(md);
 
     let index = 1;
     let edited_md = md.replace(

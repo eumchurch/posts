@@ -50,7 +50,7 @@ youtube: "${youtube}"
   });
 }
 
-async function callApi(playlistId) {
+async function callApi(playlistId, callBack) {
 
   const params = {
       key: GOOGLE_API_KEY,
@@ -66,47 +66,46 @@ async function callApi(playlistId) {
 
   let items = data?.["items"];
 
-  return items;
+  callBack(items);
 }
 
 function getSermons() {
   // 주일설교
   let category = "sermon"
   fs.mkdirSync(category, { recursive: true });
-  let items = callApi(PLAYLIST_ID_SERMON);
+  
+  let items = callApi(PLAYLIST_ID_SERMON, function(items) {
+    if (items) {
+      for (const item of items) {
+        let snippet = item?.["snippet"];
+        if (snippet) {
+          
+          let date = "";
+          let title = "";
+          let subtitle = "";
+          let description = snippet?.["description"];
+          let publishedAt = snippet?.["publishedAt"];
+          let youtube = snippet?.["resourceId"]?.["videoId"];
 
-  console.log(items);
+          if (publishedAt) {
+            date = convertPostDate(publishedAt);
+          }
 
-  // if (items) {
-  //   for (const item of items) {
-  //     let snippet = item?.["snippet"];
-  //     if (snippet) {
-        
-  //       let date = "";
-  //       let title = "";
-  //       let subtitle = "";
-  //       let description = snippet?.["description"];
-  //       let publishedAt = snippet?.["publishedAt"];
-  //       let youtube = snippet?.["resourceId"]?.["videoId"];
+          let array = description.split("\n\n");
+          if (array.length == 3) {
+            title = array[1];
+            subtitle = array[0];
+            description = array[2];
 
-  //       if (publishedAt) {
-  //         date = convertPostDate(publishedAt);
-  //       }
+          } else {
+            throw new Error("An error occured parsing youtube description.");
+          }
 
-  //       let array = description.split("\n\n");
-  //       if (array.length == 3) {
-  //         title = array[1];
-  //         subtitle = array[0];
-  //         description = array[2];
-
-  //       } else {
-  //         throw new Error("An error occured parsing youtube description.");
-  //       }
-
-  //       createFile(date, title, subtitle, category, youtube, description);
-  //     }
-  //   }
-  // }
+          createFile(date, title, subtitle, category, youtube, description);
+        }
+      }
+    }
+  });
 }
 
 getSermons();
