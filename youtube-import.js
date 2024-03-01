@@ -41,7 +41,7 @@ youtube: "${youtube}"
 </div>
 
 `;
-  contents = contents.replace("\n", "\n\n");
+  contents = contents.replaceAll("\n", "\n\n");
 
   fs.writeFile(path.join(category, date + "-" + category + ".md"), fm + contents, (err) => {
     if (err) {
