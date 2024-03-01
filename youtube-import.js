@@ -25,7 +25,7 @@ function convertPostDate(publishedAt) {
   return year + "-" + month + "-" + date;
 }
 
-function createFile(date, title, subtitle, category, youtube, description) {
+function createFile(date, title, subtitle, category, youtube, contents) {
 
   const fm = `---
 layout: post
@@ -41,9 +41,9 @@ youtube: "${youtube}"
 </div>
 
 `;
-  description = description.replace("\n", "\n\n");
+  contents = contents.replace("\n", "\n\n");
 
-  fs.writeFile(path.join(category, date + "-" + category + ".md"), md, (err) => {
+  fs.writeFile(path.join(category, date + "-" + category + ".md"), fm + contents, (err) => {
     if (err) {
       console.log(err);
     }
@@ -73,7 +73,7 @@ function getSermons() {
   // 주일설교
   let category = "sermon"
   fs.mkdirSync(category, { recursive: true });
-  
+
   let items = callApi(PLAYLIST_ID_SERMON, function(items) {
     if (items) {
       for (const item of items) {
