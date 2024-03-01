@@ -3,6 +3,7 @@ const GOOGLE_API_KEY = process.env.GOOGLE_API_KEY;
 const PLAYLIST_ID_SERMON = "PLzCVCPy03Qq1ySW_mrIsXdrrDw35NBRyE";
 const PLAYLIST_ID_QT = "PLzCVCPy03Qq2itb1HzvL5CV-TwTCRfFRA";
 const TIMEZONE_OFFSET = 1000 * 60 * 60 * 9;
+const A_DAY_OFFSET = 1000 * 60 * 60 * 24;
 
 const baseurl = 'https://www.googleapis.com/youtube/v3/playlistItems';
 const params = {
@@ -11,6 +12,23 @@ const params = {
     maxResults: 20,
     part: "snippet"
 };
+
+function convertPostDate(publishedAt) {
+  let publishedDate = new Date(publishedAt);
+  let publishedKST = new Date(publishedDate.getTime() + TIMEZONE_OFFSET);
+  let lastSunday = new Date(publishedKST.getTime() - publishedKST.getDay() * A_DAY_OFFSET);
+    
+  let year = lastSunday.getFullYear();
+  let month = lastSunday.getMonth() + 1;
+  if (month < 10) {
+      month = "0" + month;
+  }
+  let date = lastSunday.getDate();
+  if (date < 10) {
+      date = "0" + date;
+  }
+  return year + "-" + month + "-" + date;
+}
 
 const queryString = new URLSearchParams(params).toString();  // url에 쓰기 적합한 querySting으로 return 해준다. 
 const requrl = `${baseurl}?${queryString}`;
@@ -28,15 +46,11 @@ const getData = async() => {
         
         let date = "";
         let publishedAt = snippet?.["publishedAt"];
-        console.log("publishedAt: " + publishedAt);
         if (publishedAt) {
-          let publishedDate = new Date(publishedAt);
-          console.log("  date: " + publishedDate);
-          let publishedKST = new Date(publishedDate.getTime() + TIMEZONE_OFFSET);
-          console.log("  kst date: " + publishedKST);
+          date = convertPostDate(publishedAt);
         }
         let videoId = snippet?.["resourceId"]?.["videoId"];
-        console.log("  videoId: " + videoId);
+        console.log("  videoId: " + videoId + ", date: " + date);
 
         let description = snippet?.["description"];
         let array = description.split("\n\n");
