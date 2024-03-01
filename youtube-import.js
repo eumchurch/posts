@@ -2,6 +2,7 @@
 const GOOGLE_API_KEY = process.env.GOOGLE_API_KEY;
 const PLAYLIST_ID_SERMON = "PLzCVCPy03Qq1ySW_mrIsXdrrDw35NBRyE";
 const PLAYLIST_ID_QT = "PLzCVCPy03Qq2itb1HzvL5CV-TwTCRfFRA";
+const TIMEZONE_OFFSET = 1000 * 60 * 60 * 9;
 
 const baseurl = 'https://www.googleapis.com/youtube/v3/playlistItems';
 const params = {
@@ -31,6 +32,8 @@ const getData = async() => {
         if (publishedAt) {
           let publishedDate = new Date(publishedAt);
           console.log("  date: " + publishedDate);
+          let publishedKST = new Date(publishedDate.getTime() + TIMEZONE_OFFSET);
+          console.log("  kst date: " + publishedKST);
         }
         let videoId = snippet?.["resourceId"]?.["videoId"];
         console.log("  videoId: " + videoId);
