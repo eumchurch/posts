@@ -126,13 +126,13 @@ function getQts() {
           let title = snippet?.["title"];
           let publishedAt = snippet?.["publishedAt"];
           let youtube = snippet?.["resourceId"]?.["videoId"];
-
+          
           if (publishedAt) {
             date = convertPostDate(publishedAt, false);
           } else {
             throw new Error("An error occured parsing date: " + publishedAt);
           }
-
+          console.log(publishedAt + " > " + date);
           let array = title.split("(");
           if (array.length == 2) {
             array = array[1].split(")");
