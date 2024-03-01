@@ -29,7 +29,7 @@ jobs:
 
       - run: npm install
 
-      - run: node notion-import.js
+      - run: node youtube-import.js
         env:
           GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
 
