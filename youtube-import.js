@@ -8,17 +8,19 @@ const PLAYLIST_ID_QT = "PLzCVCPy03Qq2itb1HzvL5CV-TwTCRfFRA";
 const TIMEZONE_OFFSET = 1000 * 60 * 60 * 9;
 const A_DAY_OFFSET = 1000 * 60 * 60 * 24;
 
-function convertPostDate(publishedAt) {
+function convertPostDate(publishedAt, needsSunday) {
   let publishedDate = new Date(publishedAt);
   let publishedKST = new Date(publishedDate.getTime() + TIMEZONE_OFFSET);
-  let lastSunday = new Date(publishedKST.getTime() - publishedKST.getDay() * A_DAY_OFFSET);
-    
-  let year = lastSunday.getFullYear();
-  let month = lastSunday.getMonth() + 1;
+  if (needsSunday) {
+    publishedKST = new Date(publishedKST.getTime() - publishedKST.getDay() * A_DAY_OFFSET);
+  }
+  
+  let year = publishedKST.getFullYear();
+  let month = publishedKST.getMonth() + 1;
   if (month < 10) {
       month = "0" + month;
   }
-  let date = lastSunday.getDate();
+  let date = publishedKST.getDate();
   if (date < 10) {
       date = "0" + date;
   }
@@ -87,7 +89,7 @@ function getSermons() {
           let youtube = snippet?.["resourceId"]?.["videoId"];
 
           if (publishedAt) {
-            date = convertPostDate(publishedAt);
+            date = convertPostDate(publishedAt, true);
           } else {
             throw new Error("An error occured parsing date: " + publishedAt);
           }
@@ -126,7 +128,7 @@ function getQts() {
           let youtube = snippet?.["resourceId"]?.["videoId"];
 
           if (publishedAt) {
-            date = convertPostDate(publishedAt);
+            date = convertPostDate(publishedAt, false);
           } else {
             throw new Error("An error occured parsing date: " + publishedAt);
           }
