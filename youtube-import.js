@@ -41,7 +41,6 @@ youtube: "${youtube}"
 </div>
 
 `;
-  contents = contents.replaceAll("\n", "\n\n");
 
   fs.writeFile(path.join(category, date + "-" + category + ".md"), fm + contents, (err) => {
     if (err) {
@@ -89,13 +88,15 @@ function getSermons() {
 
           if (publishedAt) {
             date = convertPostDate(publishedAt);
+          } else {
+            throw new Error("An error occured parsing date: " + publishedAt);
           }
 
           let array = description.split("\n\n");
           if (array.length == 3) {
             title = array[1];
             subtitle = array[0];
-            description = array[2];
+            description = array[2].replaceAll("\n", "\n\n");
 
           } else {
             throw new Error("An error occured parsing youtube description.");
@@ -108,4 +109,47 @@ function getSermons() {
   });
 }
 
+function getQts() {
+  // 주일설교
+  let category = "qt"
+  fs.mkdirSync(category, { recursive: true });
+
+  let items = callApi(PLAYLIST_ID_QT, function(items) {
+    if (items) {
+      for (const item of items) {
+        let snippet = item?.["snippet"];
+        if (snippet) {
+          
+          let date = "";
+          let title = snippet?.["title"];
+          let publishedAt = snippet?.["publishedAt"];
+          let youtube = snippet?.["resourceId"]?.["videoId"];
+
+          if (publishedAt) {
+            date = convertPostDate(publishedAt);
+          } else {
+            throw new Error("An error occured parsing date: " + publishedAt);
+          }
+
+          let array = title.split("(");
+          if (array.length == 2) {
+            array = array[1].split(")");
+            if (array.length >= 1) {
+              title = array[0];
+            } else {
+              throw new Error("An error occured parsing youtube title.");
+            }
+
+          } else {
+            throw new Error("An error occured parsing youtube title.");
+          }
+
+          createFile(date, title, "", category, youtube, "");
+        }
+      }
+    }
+  });
+}
+
 getSermons();
+getQts();
