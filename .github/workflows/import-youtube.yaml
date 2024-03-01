@@ -1,8 +1,6 @@
 name: "Import youtube"
 on: 
-  push:
-    branches: 
-      - 'main'
+  push
   # schedule:
     #- cron: '0 * * * *'
       
