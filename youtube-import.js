@@ -32,7 +32,7 @@ const getData = async() => {
 
         console.log("publishedAt: " + publishedAt + ", videoId: " + videoId);
 
-        if array.length == 3 {
+        if (array.length == 3) {
           console.log("  title: " + array[1] + ", subtitle: " + array[0] + ", contents: " + array[2]);
         } else {
           console.log("  " + array.length + ", " + array);
