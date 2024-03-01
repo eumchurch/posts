@@ -1,7 +1,5 @@
 name: "Import youtube"
 on: 
-  workflow_dispatch
-  
   push
       
 permissions:
