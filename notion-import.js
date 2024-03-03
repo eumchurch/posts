@@ -143,6 +143,8 @@ thumbnail: "${thumbnail}"
       /!\[(.*?)\]\((.*?)\)/g,
       function (match, p1, p2, p3) {
         let filename = saveImage(ftitle, index, p2);
+        
+        index++;
 
         let res;
         if (p1 === "") res = "";
