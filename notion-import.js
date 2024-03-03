@@ -16,8 +16,8 @@ function escapeCodeBlock(body) {
   })
 }
 
-function saveImage(cat, ftitle, index, url) {
-  const dirname = path.join(cat + "/images", ftitle);
+function saveImage(ftitle, index, url) {
+  const dirname = path.join("images", ftitle);
   if (!fs.existsSync(dirname)) {
     fs.mkdirSync(dirname, { recursive: true });
   }
@@ -43,13 +43,12 @@ const n2m = new NotionToMarkdown({ notionClient: notion });
 
 (async () => {
   // ensure directory exists
-  fs.mkdirSync("ministry", { recursive: true });
-  fs.mkdirSync("bulletin", { recursive: true });
-  fs.mkdirSync("introduction", { recursive: true });
-  
-  fs.mkdirSync("ministry/images", { recursive: true });
-  fs.mkdirSync("bulletin/images", { recursive: true });
-  fs.mkdirSync("introduction/images", { recursive: true });
+  fs.mkdirSync("_posts", { recursive: true });
+  fs.mkdirSync("_posts/ministry", { recursive: true });
+  fs.mkdirSync("_posts/bulletin", { recursive: true });
+  fs.mkdirSync("_posts/introduction", { recursive: true });
+
+  fs.mkdirSync("images", { recursive: true });
 
   const databaseId = process.env.DATABASE_ID;
   // TODO has_more
@@ -143,18 +142,18 @@ thumbnail: "${thumbnail}"
     let edited_md = md.replace(
       /!\[(.*?)\]\((.*?)\)/g,
       function (match, p1, p2, p3) {
-        let filename = saveImage(cat, ftitle, index, p2);
+        let filename = saveImage(ftitle, index, p2);
 
         let res;
         if (p1 === "") res = "";
         else res = `_${p1}_`;
 
-        return `![${index++}](/${filename})${res}`;
+        return `<img src="/posts/images/${filename}" style="width: 100%">`;
       }
     );
 
     //writing to file
-    fs.writeFile(path.join(cat, ftitle+".md"), fm + edited_md, (err) => {
+    fs.writeFile(path.join(cat, ftitle + ".md"), fm + edited_md, (err) => {
       if (err) {
         console.log(err);
       }
