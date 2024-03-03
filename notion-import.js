@@ -17,7 +17,7 @@ function escapeCodeBlock(body) {
 }
 
 function saveImage(ftitle, index, url) {
-  const dirname = path.join("images", ftitle);
+  const dirname = path.join("posts/images", ftitle);
   if (!fs.existsSync(dirname)) {
     fs.mkdirSync(dirname, { recursive: true });
   }
@@ -150,7 +150,7 @@ thumbnail: "${thumbnail}"
         if (p1 === "") res = "";
         else res = `_${p1}_`;
 
-        return `<img src="/posts/images/${filename}" style="width: 100%">`;
+        return `<img src="${filename}" style="width: 100%">`;
       }
     );
 
