@@ -22,8 +22,7 @@ jobs:
     
       - name: Clean Directory
         run: |
-          rm -rf qt/*
-          rm -rf sermon/*
+          rm -rf _posts/*
       
       - uses: actions/setup-node@v4
         with:

@@ -44,7 +44,7 @@ youtube: "${youtube}"
 
 `;
 
-  fs.writeFile(path.join(category, date + "-" + category + ".md"), fm + contents, (err) => {
+  fs.writeFile(path.join("_posts/" + category, date + "-" + category + ".md"), fm + contents, (err) => {
     if (err) {
       console.log(err);
     }
