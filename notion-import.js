@@ -153,7 +153,7 @@ thumbnail: "${thumbnail}"
     );
 
     //writing to file
-    fs.writeFile(path.join(cat, ftitle + ".md"), fm + edited_md, (err) => {
+    fs.writeFile(path.join("_posts/" + cat, ftitle + ".md"), fm + edited_md, (err) => {
       if (err) {
         console.log(err);
       }
