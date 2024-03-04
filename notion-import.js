@@ -35,7 +35,7 @@ function saveImage(ftitle, index, url) {
       console.log(error);
     });
 
-  return filename;
+  return "/" + filename;
 }
 
 // passing notion client to the option
