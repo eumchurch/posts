@@ -35,7 +35,7 @@ function saveImage(ftitle, index, url) {
       console.log(error);
     });
 
-  return "/" + filename;
+  return filename;
 }
 
 // passing notion client to the option
@@ -109,7 +109,7 @@ const n2m = new NotionToMarkdown({ notionClient: notion });
     let pthumbnail = r.properties?.["thumbnail"]?.["files"][0];
     if (pthumbnail) {
       let url = pthumbnail?.["file"]?.["url"];
-      let filename = saveImage(ftitle, 0, url);
+      let filename = "/posts/" + saveImage(ftitle, 0, url);
       thumbnail = filename;
     }
 
@@ -142,7 +142,7 @@ thumbnail: "${thumbnail}"
     let edited_md = md.replace(
       /!\[(.*?)\]\((.*?)\)/g,
       function (match, p1, p2, p3) {
-        let filename = saveImage(ftitle, index, p2);
+        let filename = "/posts/" + saveImage(ftitle, index, p2);
         
         index++;
 
