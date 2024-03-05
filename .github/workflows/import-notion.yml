@@ -22,7 +22,9 @@ jobs:
     
       - name: Clean Directory
         run: |
-          rm -rf _posts/*
+          rm -rf _posts/introduction/*
+          rm -rf _posts/ministry/*
+          rm -rf _posts/bulletin/*
           rm -rf images/*
       
       - uses: actions/setup-node@v4

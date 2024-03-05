@@ -73,7 +73,7 @@ async function callApi(playlistId, callBack) {
 function getSermons() {
   // 주일설교
   let category = "sermon"
-  fs.mkdirSync(category, { recursive: true });
+  fs.mkdirSync("_posts/" + category, { recursive: true });
 
   let items = callApi(PLAYLIST_ID_SERMON, function(items) {
     if (items) {
@@ -114,7 +114,7 @@ function getSermons() {
 function getQts() {
   // 주일설교
   let category = "qt"
-  fs.mkdirSync(category, { recursive: true });
+  fs.mkdirSync("_posts/" + category, { recursive: true });
 
   let items = callApi(PLAYLIST_ID_QT, function(items) {
     if (items) {

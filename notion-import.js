@@ -44,7 +44,6 @@ const n2m = new NotionToMarkdown({ notionClient: notion });
 (async () => {
   // ensure directory exists
   fs.mkdirSync("images", { recursive: true });
-  fs.mkdirSync("_posts", { recursive: true });
   fs.mkdirSync("_posts/ministry", { recursive: true });
   fs.mkdirSync("_posts/bulletin", { recursive: true });
   fs.mkdirSync("_posts/introduction", { recursive: true });
