@@ -5,7 +5,6 @@ on:
       
 permissions:
   contents: write
-  pages: write
   id-token: write
 
 # Allow one concurrent deployment
@@ -45,6 +44,6 @@ jobs:
           commit_message: "[배포] Notion 변경 사항 저장"
           branch: main
           commit_user_name: importer-bot 🤖
-          commit_user_email: actions@github.com
-          commit_author: importer-bot 🤖 <actions@github.com>
+          commit_user_email: kmj4138@gmail.com
+          commit_author: importer-bot 🤖 <kmj4138@gmail.com>
  
