@@ -2,7 +2,7 @@ name: "Import youtube"
 on: 
   # workflow_dispatch
   schedule:
-    - cron: '0 3 * * 1,2,3,4,5'
+    - cron: '0 3 * * 1,2,3,4,5,6'
       
 permissions:
   contents: write
@@ -40,4 +40,8 @@ jobs:
           commit_user_name: importer-bot 🤖
           commit_user_email: kmj4138@gmail.com
           commit_author: importer-bot 🤖 <kmj4138@gmail.com>
+ 
+      - name: Update submodule in original repo
+        run: |
+          curl -fL --retry 3 -X POST -H "Accept: application/vnd.github.v3+json" -H "Content-Type: application/json" -H "Authorization: Bearer ${{ secrets.ACTION_TOKEN }}" https://api.github.com/repos/eumchurch/eumchurch.github.io/dispatches -d '{"event_type": "RUN_WORKFLOW_DISPATCH"}'
  
