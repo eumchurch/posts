@@ -2,7 +2,7 @@ name: "Import youtube"
 on: 
   # workflow_dispatch
   schedule:
-    - cron: '0 3 * * 1,2,3,4,5,6'
+    - cron: '0 3 * * 1,2,3,4,5'
       
 permissions:
   contents: write
@@ -37,9 +37,9 @@ jobs:
         with:
           commit_message: "[배포] Youtube 변경 사항 저장"
           branch: main
-          commit_user_name: importer-bot 🤖
+          commit_user_name: youtube-bot 🤖
           commit_user_email: kmj4138@gmail.com
-          commit_author: importer-bot 🤖 <kmj4138@gmail.com>
+          commit_author: youtube-bot 🤖 <kmj4138@gmail.com>
  
       - name: Update submodule in original repo
         run: |
