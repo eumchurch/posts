@@ -1,5 +1,5 @@
 ## [eumchurch.github.io](https://github.com/eumchurch/eumchurch.github.io) 포스트 모음
-`sermon`, `qt` 포스트는 youtube 재생목록에서,
+`sermon`, `qt` 포스트는 youtube 재생목록에서,  
 `introduction`, `ministry`, `bulletin` 포스트는 notion에서 자동으로 import 한다.
 
 참고:  
