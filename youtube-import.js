@@ -101,7 +101,7 @@ function getSermons() {
             description = array[2].replaceAll("\n", "\n\n");
 
           } else {
-            throw new Error("An error occured parsing youtube description.");
+            throw new Error("An error occured parsing youtube description.\n" + description);
           }
 
           createFile(date, title, subtitle, category, youtube, description);
