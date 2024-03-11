@@ -84,7 +84,8 @@ function getSermons() {
           let date = "";
           let title = "";
           let subtitle = "";
-          let description = snippet?.["description"];
+          let description = "";
+          let desc = snippet?.["description"];
           let publishedAt = snippet?.["publishedAt"];
           let youtube = snippet?.["resourceId"]?.["videoId"];
 
@@ -94,12 +95,15 @@ function getSermons() {
             throw new Error("An error occured parsing date: " + publishedAt);
           }
 
-          let array = description.split("\n\n");
-          if (array.length == 3) {
+          let array = desc.split("\n\n");
+          if (array.length >= 3) {
             title = array[1];
             subtitle = array[0];
-            description = array[2].replaceAll("\n", "\n\n");
-
+            
+            for (let i=2; i<array.length; i++) {
+              let string = array[i];
+              description += (string.replaceAll("\n", "\n\n") + "\n\n");
+            }
           } else {
             throw new Error("An error occured parsing youtube description.\n" + description);
           }
