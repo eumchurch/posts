@@ -79,6 +79,12 @@ const n2m = new NotionToMarkdown({ notionClient: notion });
     if (psubtitle?.length > 0) {
       subtitle = psubtitle[0]?.["plain_text"];
     }
+    // endpoint
+    let endpoint = title;
+    let pendpoint = r.properties?.["endpoint"]?.["rich_text"];
+    if (pendpoint?.length > 0) {
+      endpoint = pendpoint[0]?.["plain_text"];
+    }
     // author
     let author = "";
     let pauthor = r.properties?.["author"]?.["rich_text"];
@@ -100,7 +106,7 @@ const n2m = new NotionToMarkdown({ notionClient: notion });
       cat = pcats?.["name"];
     }
 
-    const ftitle = `${date}-${title.replaceAll(" ", "-")}`;
+    const ftitle = `${date}-${endpoint.replaceAll(" ", "-")}`;
 
     // thumbnail
     let thumbnail = "";
