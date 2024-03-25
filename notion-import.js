@@ -150,11 +150,12 @@ thumbnail: "${thumbnail}"
         
         index++;
 
-        let res;
+        let caption;
         if (p1 === "") res = "";
-        else res = `_${p1}_`;
+        else caption = `${p1}`;
 
-        return `<img src="${filename}" style="width: 100%"></br><font class="caption">${res}</font>`;
+        return `<img src="${filename}" style="width: 100%">  
+        <font class="caption">${res}</font>`;
       }
     );
 
