@@ -155,7 +155,7 @@ thumbnail: "${thumbnail}"
         else caption = `${p1}`;
 
         return `<img src="${filename}" style="width: 100%">  
-        <font class="caption">${res}</font>`;
+        <font class="caption">${caption}</font>`;
       }
     );
 
