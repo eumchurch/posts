@@ -25,7 +25,7 @@ thumbnail: "/posts/images/2023-08-05-school-summer-retreat/0.png"
 모래놀이도 하고, 조개도 잡고, 튜브를 타고 파도에 몸을 맡기기도 하며 즐거운 물놀이를 즐겼습니다.
 
 
-<img src="/posts/images/2023-08-05-school-summer-retreat/1.png" style="width: 100%">
+<img src="/posts/images/2023-08-05-school-summer-retreat/1.png" style="width: 100%"></br><font class="caption"></font>
 
 
 신나게 물놀이를 한 뒤 숙소로 돌아가 개운하게 씻고
