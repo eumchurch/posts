@@ -26,7 +26,8 @@ thumbnail: "/posts/images/2022-12-25-christmas-homeparty/0.png"
 맛있는 저녁 식사를 대접하는 것으로 파티는 시작되었습니다.
 
 
-<img src="/posts/images/2022-12-25-christmas-homeparty/1.png" style="width: 100%"></br><font class="caption"></font>
+<img src="/posts/images/2022-12-25-christmas-homeparty/1.png" style="width: 100%">  
+        <font class="caption">undefined</font>
 
 
 식사가 끝나갈 때 쯤 피아노, 바이올린, 클라리넷 3중주로  
@@ -45,7 +46,8 @@ thumbnail: "/posts/images/2022-12-25-christmas-homeparty/0.png"
 (거의 1년 후 적고 있는 이 글,, 허허)
 
 
-<img src="/posts/images/2022-12-25-christmas-homeparty/2.png" style="width: 100%"></br><font class="caption"></font>
+<img src="/posts/images/2022-12-25-christmas-homeparty/2.png" style="width: 100%">  
+        <font class="caption">undefined</font>
 
 
 예수님이 이 땅에 오시며 우리와 함께 하셨듯, 우리도 이웃과 함께하기 위해 준비한  

@@ -38,7 +38,8 @@ thumbnail: "/posts/images/2023-08-15-summer-retreat/0.png"
 약 한 달간의 탐방기를 시간 가는 줄 모르고 푹 빠져서 들었는데요, 짧은 시간이 아쉬울 정도로 알차고 재밌는 시간이었습니다.
 
 
-<img src="/posts/images/2023-08-15-summer-retreat/1.png" style="width: 100%"></br><font class="caption"></font>
+<img src="/posts/images/2023-08-15-summer-retreat/1.png" style="width: 100%">  
+        <font class="caption">undefined</font>
 
 
 여름 수련회에서 빠질 수 없는 것, 해수욕장 물놀이!
