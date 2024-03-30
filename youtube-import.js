@@ -72,7 +72,7 @@ async function callApi(playlistId, callBack) {
   callBack(items);
 }
 
-function checkSermons() {
+async function checkSermons() {
 
   const params = {
     key: GOOGLE_API_KEY,
