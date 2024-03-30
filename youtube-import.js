@@ -2,9 +2,11 @@ const fs = require("fs");
 const path = require("path");
 const GOOGLE_API_KEY = process.env.GOOGLE_API_KEY;
 
-const baseurl = 'https://www.googleapis.com/youtube/v3/playlistItems';
+const playlistItemsUrl = 'https://www.googleapis.com/youtube/v3/playlistItems';
+const searchUrl = 'https://www.googleapis.com/youtube/v3/search';
 const PLAYLIST_ID_SERMON = "PLzCVCPy03Qq1ySW_mrIsXdrrDw35NBRyE";
 const PLAYLIST_ID_QT = "PLzCVCPy03Qq2itb1HzvL5CV-TwTCRfFRA";
+const CHANNEL_ID = "UC2pp2CNwey9Yc79XcxJyHGw";
 const TIMEZONE_OFFSET = 1000 * 60 * 60 * 17;
 const A_DAY_OFFSET = 1000 * 60 * 60 * 24;
 
@@ -60,7 +62,7 @@ async function callApi(playlistId, callBack) {
       part: "snippet"
   };
   const queryString = new URLSearchParams(params).toString();  // url에 쓰기 적합한 querySting으로 return 해준다. 
-  const requrl = `${baseurl}?${queryString}`; 
+  const requrl = `${playlistItemsUrl}?${queryString}`; 
 
   const res = await fetch(requrl);
   const data = await res.json();
@@ -68,6 +70,27 @@ async function callApi(playlistId, callBack) {
   let items = data?.["items"];
 
   callBack(items);
+}
+
+function checkSermons() {
+
+  const params = {
+    key: GOOGLE_API_KEY,
+    channelId: CHANNEL_ID,
+    q: "설교",
+    order: "date",
+    part: "snippet",
+    maxResults: 5
+  };
+  const queryString = new URLSearchParams(params).toString();
+  const requrl = `${searchUrl}?${queryString}`;
+
+  const res = await fetch(requrl);
+  const data = await res.json();
+  let firstVideoId = data?.["items"]?[0].["id"]?.["videoId"];
+
+  console.log(firstVideoId);
+
 }
 
 function getSermons() {
@@ -157,5 +180,6 @@ function getQts() {
   });
 }
 
+checkSermons();
 getSermons();
 getQts();
