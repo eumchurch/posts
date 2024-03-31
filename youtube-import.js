@@ -87,10 +87,11 @@ async function checkSermons() {
 
   const res = await fetch(requrl);
   const data = await res.json();
-  let firstVideoId = data?.["items"]?[0]?.["id"]?.["videoId"]?;
-
-  console.log(firstVideoId);
-
+  let firstItem = data?.["items"]?[0];
+  if (firstItem) {
+    let firstVideoId = firstItem["id"]?.["videoId"];
+    console.log(firstVideoId);
+  }
 }
 
 function getSermons() {
