@@ -170,10 +170,10 @@ thumbnail: "${thumbnail}"`;
 
 
     edited_md = edited_md.replace(
-      /\[(.*?)youtu(.*?)\/(.*?)\]\((.*?)\)/g,
+      /\[(.*?)\]\((.*?)\)/g,
       function (match, p1, p2, p3, p4) {
         return `<div class="youtube margin-large">
-    <iframe src="https://www.youtube.com/embed/${p2}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    <iframe src="${p2}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 </div>`;
       }
     );
