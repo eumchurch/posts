@@ -159,6 +159,16 @@ thumbnail: "${thumbnail}"
       }
     );
 
+
+    let edited_md = md.replace(
+      /\[(.*?)youtu(.*?)\/(.*?)\]\((.*?)\)/g,
+      function (match, p1, p2, p3, p4) {
+        return `<div class="youtube margin-large">
+    <iframe src="https://www.youtube.com/embed/${p2}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>`;
+      }
+    );
+
     //writing to file
     fs.writeFile(path.join("_posts/" + cat, ftitle + ".md"), fm + edited_md, (err) => {
       if (err) {
