@@ -169,7 +169,7 @@ thumbnail: "${thumbnail}"`;
     );
 
 
-    let edited_md = md.replace(
+    edited_md = edited_md.replace(
       /\[(.*?)youtu(.*?)\/(.*?)\]\((.*?)\)/g,
       function (match, p1, p2, p3, p4) {
         return `<div class="youtube margin-large">
