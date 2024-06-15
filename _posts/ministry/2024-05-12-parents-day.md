@@ -34,10 +34,12 @@ thumbnail: "/posts/images/2024-05-12-parents-day/0.png"
 타지에서 오시는 분들이 많고, 또 가족을 예배에 초청하는 것이 어려운 지체들이 많았던 만큼, 가족 초청 예배는 1년 전부터 예정되었습니다. 그동안 별로 회의나 대화로, 어떤 계획으로 준비하지 못했음에도 우리의 믿음과 마음이 여러모로 준비되어 온 것을 알 수 있었습니다. 모든 과정을 인도하신 하나님께 영광 드립니다.
 
 
-> **별첨  
-> 이음교회를 소개합니다!**  
-> - 부모님께 보내는 편지
+> 별첨  
+> **이음교회를 소개합니다!  
+> (**부모님께 보내는 편지)
 
 
-[image](https://youtu.be/nmPy4lTuUgQ)
+<div class="youtube margin-large">
+    <iframe src="https://youtu.be/nmPy4lTuUgQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
 
