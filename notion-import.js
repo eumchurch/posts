@@ -162,8 +162,7 @@ thumbnail: "${thumbnail}"`;
 
         let imgSource = `<img src="${filename}" style="width: 100%">`;
         let captionSource = "";
-        if (caption.length > 0) captionSource = `
-<font class="caption">${caption}</font>`;
+        if (caption.length > 0) captionSource = `<br/><font class="caption">${caption}</font>`;
 
         return imgSource + captionSource;
       }
