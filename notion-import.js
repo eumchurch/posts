@@ -151,7 +151,9 @@ thumbnail: "${thumbnail}"`;
     md = escapeCodeBlock(md);
     
     if (title === "가족 초청 예배") {
+      console.log("==========");
       console.log(md);
+      console.log("==========");
     }
     
     let index = 1;
@@ -159,12 +161,6 @@ thumbnail: "${thumbnail}"`;
       /!\[(.*?)\]\((.*?)\)/g,
       function (match, p1, p2) {
         let filename = "/posts/" + saveImage(ftitle, index, p2);
-        
-        if (title === "가족 초청 예배") {
-          console.log(match);
-          console.log(p1);
-          console.log(p2);
-        }
         
         index++;
 
@@ -179,15 +175,22 @@ thumbnail: "${thumbnail}"`;
         return imgSource + captionSource;
       }
     );
-
-    if (title === "가족 초청 예배") {
-      console.log("---");
-      console.log(edited_md);
-      console.log("---");
-    }
+    
     edited_md = edited_md.replace(
       /\[(.*?)\]\(https:\/\/youtu\.be\/(.*?)\)/g,
-      function (match, p1, p2) {
+      function (match, p1, p2, p3) {
+
+        
+        if (title === "가족 초청 예배") {
+          console.log("==========");
+          console.log(match);
+          console.log(p1);
+          console.log(p2);
+          console.log(p3);
+          console.log("==========");
+        }
+        
+        
         return `<div class="youtube margin-large">
     <iframe src="https://www.youtube.com/embed/${p2}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 </div>`;
