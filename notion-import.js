@@ -152,6 +152,13 @@ thumbnail: "${thumbnail}"`;
     let edited_md = md.replace(
       /!\[(.*?)\]\((.*?)\)/g,
       function (match, p1, p2, p3) {
+        
+        console.log(match);
+          console.log(p1);
+          console.log(p2);
+          console.log(p3);
+          console.log(p4);
+        
         let filename = "/posts/" + saveImage(ftitle, index, p2);
         
         index++;
