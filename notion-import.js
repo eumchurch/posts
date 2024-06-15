@@ -143,11 +143,17 @@ thumbnail: "${thumbnail}"`;
     fm = fm + `
 ---
 `;
+
+    
     
     const mdblocks = await n2m.pageToMarkdown(id);
     let md = n2m.toMarkdownString(mdblocks)["parent"];
     md = escapeCodeBlock(md);
-
+    
+    if (title === "가족 초청 예배") {
+      console.log(md);
+    }
+    
     let index = 1;
     let edited_md = md.replace(
       /!\[(.*?)\]\((.*?)\)/g,
