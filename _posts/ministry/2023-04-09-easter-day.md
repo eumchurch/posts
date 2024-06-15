@@ -3,11 +3,9 @@ layout: post
 date: 2023-04-09
 title: "부활절"
 category: "ministry"
-subtitle: ""
 author: "H"
 thumbnail: "/posts/images/2023-04-09-easter-day/0.png"
 ---
-
 
 지난 4월, 부활절을 맞아 이음교회는 크리스천으로서 부활의 기쁨을 전하는 사역을 진행했습니다.
 신촌역 6번 출구 앞에는 작은 광장이 있는데요,
@@ -20,8 +18,7 @@ thumbnail: "/posts/images/2023-04-09-easter-day/0.png"
 우리의 목소리가 함께하는 찬양이 이어졌습니다.
 
 
-<img src="/posts/images/2023-04-09-easter-day/1.png" style="width: 100%">  
-        <font class="caption">undefined</font>
+<img src="/posts/images/2023-04-09-easter-day/1.png" style="width: 100%">
 
 
 두 번째 팀은 계란과 전도카드를 배부하는 나눔팀입니다.
@@ -30,8 +27,7 @@ thumbnail: "/posts/images/2023-04-09-easter-day/0.png"
 무료 음료 혜택은 부활절 당일과 4월 한 달간 제공되는 혜택이었답니다.
 
 
-<img src="/posts/images/2023-04-09-easter-day/2.png" style="width: 100%">  
-        <font class="caption">undefined</font>
+<img src="/posts/images/2023-04-09-easter-day/2.png" style="width: 100%">
 
 
 세 번째 팀은 전도카드를 가져오면 음료를 제공하는 카페팀입니다.

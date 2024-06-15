@@ -127,17 +127,23 @@ const n2m = new NotionToMarkdown({ notionClient: notion });
       fmtags += "]";
     }
 
-    const fm = `---
+    let fm = `---
 layout: post
 date: ${date}
 title: "${title}"${fmtags}
-category: "${cat}"
-subtitle: "${subtitle}"
-author: "${author}"
-thumbnail: "${thumbnail}"
----
+category: "${cat}"`;
 
+    if (subtitle.length > 0) fm = fm + `
+subtitle: "${subtitle}"`;
+    if (author.length > 0) fm = fm + `
+author: "${author}"`;
+    if (thumbnail.length > 0) fm = fm + `
+thumbnail: "${thumbnail}"`;
+    
+    fm = fm + `
+---
 `;
+    
     const mdblocks = await n2m.pageToMarkdown(id);
     let md = n2m.toMarkdownString(mdblocks)["parent"];
     md = escapeCodeBlock(md);
@@ -150,12 +156,15 @@ thumbnail: "${thumbnail}"
         
         index++;
 
-        let caption;
+        let caption = "";
         if (p1 === "") res = "";
         else caption = `${p1}`;
 
-        return `<img src="${filename}" style="width: 100%">  
-        <font class="caption">${caption}</font>`;
+        let imgSource = `<img src="${filename}" style="width: 100%">`;
+        let captionSource = "";
+        if (caption.length > 0) captionSource = `<br/><font class="caption">${caption}</font>`;
+
+        return imgSource + captionSource;
       }
     );
 

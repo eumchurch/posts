@@ -3,11 +3,9 @@ layout: post
 date: 2023-08-05
 title: "여름 성경학교 캠프"
 category: "ministry"
-subtitle: ""
 author: "H"
 thumbnail: "/posts/images/2023-08-05-school-summer-retreat/0.png"
 ---
-
 
 지난 7월, 이음교회의 주일학교 학생과 교사, 그리고 학부모는 강원도 양양으로 향했습니다.
 
@@ -25,8 +23,7 @@ thumbnail: "/posts/images/2023-08-05-school-summer-retreat/0.png"
 모래놀이도 하고, 조개도 잡고, 튜브를 타고 파도에 몸을 맡기기도 하며 즐거운 물놀이를 즐겼습니다.
 
 
-<img src="/posts/images/2023-08-05-school-summer-retreat/1.png" style="width: 100%">  
-        <font class="caption">undefined</font>
+<img src="/posts/images/2023-08-05-school-summer-retreat/1.png" style="width: 100%">
 
 
 신나게 물놀이를 한 뒤 숙소로 돌아가 개운하게 씻고
