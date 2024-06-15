@@ -150,12 +150,6 @@ thumbnail: "${thumbnail}"`;
     let md = n2m.toMarkdownString(mdblocks)["parent"];
     md = escapeCodeBlock(md);
     
-    if (title === "가족 초청 예배") {
-      console.log("==========");
-      console.log(md);
-      console.log("==========");
-    }
-    
     let index = 1;
     let edited_md = md.replace(
       /!\[(.*?)\]\((.*?)\)/g,
@@ -179,18 +173,6 @@ thumbnail: "${thumbnail}"`;
     edited_md = edited_md.replace(
       /\[(.*?)\]\(https:\/\/youtu\.be\/(.*?)\)/g,
       function (match, p1, p2, p3) {
-
-        
-        if (title === "가족 초청 예배") {
-          console.log("==========");
-          console.log(match);
-          console.log(p1);
-          console.log(p2);
-          console.log(p3);
-          console.log("==========");
-        }
-        
-        
         return `<div class="youtube margin-large">
     <iframe src="https://www.youtube.com/embed/${p2}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 </div>`;
