@@ -172,8 +172,13 @@ thumbnail: "${thumbnail}"`;
     edited_md = edited_md.replace(
       /\[.*youtu.*\]\((.*?)\)/g,
       function (match, p1, p2, p3, p4) {
+        console.log(match);
+          console.log(p1);
+          console.log(p2);
+          console.log(p3);
+          console.log(p4);
         return `<div class="youtube margin-large">
-    <iframe src="${p2}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    <iframe src="${p1}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 </div>`;
       }
     );
