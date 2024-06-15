@@ -151,13 +151,7 @@ thumbnail: "${thumbnail}"`;
     let index = 1;
     let edited_md = md.replace(
       /!\[(.*?)\]\((.*?)\)/g,
-      function (match, p1, p2, p3) {
-        
-        console.log(match);
-          console.log(p1);
-          console.log(p2);
-          console.log(p3);
-        
+      function (match, p1, p2) {
         let filename = "/posts/" + saveImage(ftitle, index, p2);
         
         index++;
@@ -176,15 +170,10 @@ thumbnail: "${thumbnail}"`;
 
 
     edited_md = edited_md.replace(
-      /\[.*youtu.*\]\((.*?)\)/g,
-      function (match, p1, p2, p3, p4) {
-        console.log(match);
-          console.log(p1);
-          console.log(p2);
-          console.log(p3);
-          console.log(p4);
+      /\[https:\/\/youtu\.be\/(.*?)\]\((.*?)\)/g,
+      function (match, p1) {
         return `<div class="youtube margin-large">
-    <iframe src="${p1}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    <iframe src="https://www.youtube.com/embed/${p1}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 </div>`;
       }
     );
