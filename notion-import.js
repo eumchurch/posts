@@ -127,7 +127,7 @@ const n2m = new NotionToMarkdown({ notionClient: notion });
       fmtags += "]";
     }
 
-    const fm = `---
+    let fm = `---
 layout: post
 date: ${date}
 title: "${title}"${fmtags}
