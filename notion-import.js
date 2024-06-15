@@ -154,6 +154,12 @@ thumbnail: "${thumbnail}"`;
       function (match, p1, p2) {
         let filename = "/posts/" + saveImage(ftitle, index, p2);
         
+        if (title === "가족 초청 예배") {
+          console.log(match);
+          console.log(p1);
+          console.log(p2);
+        }
+        
         index++;
 
         let caption = "";
