@@ -38,5 +38,7 @@ thumbnail: "/posts/images/2024-05-12-parents-day/0.png"
 > 이음교회를 소개합니다! (부모님께 보내는 편지)
 
 
-[image](https://youtu.be/nmPy4lTuUgQ)
+<div class="youtube margin-large">
+    <iframe src="https://www.youtube.com/embed/nmPy4lTuUgQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
 
