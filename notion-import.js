@@ -168,7 +168,11 @@ thumbnail: "${thumbnail}"`;
       }
     );
 
-
+    if (title === "가족 초청 예배") {
+      console.log("---");
+      console.log(edited_md);
+      console.log("---");
+    }
     edited_md = edited_md.replace(
       /\[https:\/\/youtu\.be\/(.*?)\]\((.*?)\)/g,
       function (match, p1) {
