@@ -3,11 +3,9 @@ layout: post
 date: 2023-08-15
 title: "전교인 수련회"
 category: "ministry"
-subtitle: ""
 author: "H"
 thumbnail: "/posts/images/2023-08-15-summer-retreat/0.png"
 ---
-
 
 2023년 8월 둘째 주,
 주일 예배를 마친 뒤 이음교회는 전교인 수련회를 진행하였습니다.
@@ -38,8 +36,7 @@ thumbnail: "/posts/images/2023-08-15-summer-retreat/0.png"
 약 한 달간의 탐방기를 시간 가는 줄 모르고 푹 빠져서 들었는데요, 짧은 시간이 아쉬울 정도로 알차고 재밌는 시간이었습니다.
 
 
-<img src="/posts/images/2023-08-15-summer-retreat/1.png" style="width: 100%">  
-        <font class="caption">undefined</font>
+<img src="/posts/images/2023-08-15-summer-retreat/1.png" style="width: 100%">
 
 
 여름 수련회에서 빠질 수 없는 것, 해수욕장 물놀이!
