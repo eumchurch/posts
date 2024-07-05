@@ -1,8 +1,8 @@
 ---
 layout: post
 date: 2023-08-15
-title: "전교인 수련회"
 category: "ministry"
+title: "전교인 수련회"
 author: "H"
 thumbnail: "/posts/images/2023-08-15-summer-retreat/0.png"
 ---

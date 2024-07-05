@@ -1,8 +1,8 @@
 ---
 layout: post
 date: 2022-12-25
-title: "크리스마스 홈파티"
 category: "ministry"
+title: "크리스마스 홈파티"
 subtitle: "첫 번째 에피소드_Friends"
 author: "H"
 thumbnail: "/posts/images/2022-12-25-christmas-homeparty/0.png"

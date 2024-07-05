@@ -1,8 +1,8 @@
 ---
 layout: post
 date: 2023-08-05
-title: "여름 성경학교 캠프"
 category: "ministry"
+title: "여름 성경학교 캠프"
 author: "H"
 thumbnail: "/posts/images/2023-08-05-school-summer-retreat/0.png"
 ---

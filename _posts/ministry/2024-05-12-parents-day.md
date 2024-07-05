@@ -1,8 +1,8 @@
 ---
 layout: post
 date: 2024-05-12
-title: "가족 초청 예배"
 category: "ministry"
+title: "가족 초청 예배"
 author: "MJ"
 thumbnail: "/posts/images/2024-05-12-parents-day/0.png"
 ---

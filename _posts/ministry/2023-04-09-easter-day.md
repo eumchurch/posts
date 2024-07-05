@@ -1,8 +1,8 @@
 ---
 layout: post
 date: 2023-04-09
-title: "부활절"
 category: "ministry"
+title: "부활절"
 author: "H"
 thumbnail: "/posts/images/2023-04-09-easter-day/0.png"
 ---
