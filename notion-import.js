@@ -63,9 +63,11 @@ const n2m = new NotionToMarkdown({ notionClient: notion });
     const id = r.id;
     // date
     let date = moment(r.created_time).format("YYYY-MM-DD");
+    let dateKorean = moment(r.created_time).format("YYYY년 M월 D일");
     let pdate = r.properties?.["date"]?.["date"]?.["start"];
     if (pdate) {
       date = moment(pdate).format("YYYY-MM-DD");
+      dateKorean = moment(pdate).format("YYYY년 MM월 DD일");
     }
     // title
     let title = id;
@@ -130,9 +132,11 @@ const n2m = new NotionToMarkdown({ notionClient: notion });
     let fm = `---
 layout: post
 date: ${date}
-title: "${title}"${fmtags}
 category: "${cat}"`;
-
+    if (title.length > 0) fm = fm + `
+title: "${title}"${fmtags}`;
+    else fm = fm + `
+title: ${dateKorean}`;
     if (subtitle.length > 0) fm = fm + `
 subtitle: "${subtitle}"`;
     if (author.length > 0) fm = fm + `
