@@ -63,7 +63,7 @@ const n2m = new NotionToMarkdown({ notionClient: notion });
     const id = r.id;
     // date
     let date = moment(r.created_time).format("YYYY-MM-DD");
-    let dateKorean = moment(r.created_time).format("YYYY년 M월 D일");
+    let dateKorean = moment(r.created_time).format("YYYY년 MM월 DD일");
     let pdate = r.properties?.["date"]?.["date"]?.["start"];
     if (pdate) {
       date = moment(pdate).format("YYYY-MM-DD");
