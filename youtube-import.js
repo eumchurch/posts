@@ -119,7 +119,7 @@ function getSermons() {
           if (publishedAt) {
             date = convertPostDate(publishedAt, true);
           } else {
-            throw new Error("An error occured parsing date: " + publishedAt);
+            throw new Error("An error occured parsing sermon date: " + publishedAt);
           }
 
           let array = desc.split("\n\n");
@@ -132,7 +132,7 @@ function getSermons() {
               description += (string.replaceAll("\n", "\n\n") + "\n\n");
             }
           } else {
-            throw new Error("An error occured parsing youtube description.\n" + description);
+            throw new Error("An error occured parsing youtube sermon description.\n" + description);
           }
 
           createFile(date, title, subtitle, category, youtube, description);
@@ -161,20 +161,21 @@ function getQts() {
           if (publishedAt) {
             date = convertPostDate(publishedAt, false);
           } else {
-            throw new Error("An error occured parsing date: " + publishedAt);
+            throw new Error("An error occured parsing qt date: " + publishedAt);
           }
           
           let array = title.split("(");
           if (array.length == 2) {
             array = array[1].split(")");
-            if (array.length >= 1) {
-              title = array[0];
-            } else {
-              throw new Error("An error occured parsing youtube title.");
-            }
-
+          } else if (array.length == 3) {
+            array = array[2].split(")");
           } else {
-            throw new Error("An error occured parsing youtube title.");
+            throw new Error("An error occured parsing youtube qt title 1");
+          }
+          if (array.length >= 1) {
+            title = array[0];
+          } else {
+            throw new Error("An error occured parsing youtube qt title 2");
           }
 
           createFile(date, title, "", category, youtube, "");
