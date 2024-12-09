@@ -1,5 +1,6 @@
 name: "Import youtube"
 on: 
+  push
   # workflow_dispatch
   schedule:
     - cron: '0 3 * * 1,2,3,4,5'
