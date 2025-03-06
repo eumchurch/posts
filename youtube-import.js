@@ -4,8 +4,8 @@ const GOOGLE_API_KEY = process.env.GOOGLE_API_KEY;
 
 const playlistItemsUrl = 'https://www.googleapis.com/youtube/v3/playlistItems';
 const searchUrl = 'https://www.googleapis.com/youtube/v3/search';
-const PLAYLIST_ID_SERMON = "PLzCVCPy03Qq1ySW_mrIsXdrrDw35NBRyE";
-const PLAYLIST_ID_QT = "PLzCVCPy03Qq2itb1HzvL5CV-TwTCRfFRA";
+const PLAYLIST_ID_SERMON = "PLzCVCPy03Qq3HzyPBLCTU53sMtG-Da2_P";
+const PLAYLIST_ID_QT = "PLzCVCPy03Qq1UV8gBxaIj2YQ3G4-Zj_Zy";
 const CHANNEL_ID = "UC2pp2CNwey9Yc79XcxJyHGw";
 const TIMEZONE_OFFSET = 1000 * 60 * 60 * 17;
 const A_DAY_OFFSET = 1000 * 60 * 60 * 24;
@@ -80,7 +80,7 @@ async function checkSermons() {
     q: "설교",
     order: "date",
     part: "snippet",
-    maxResults: 5
+    maxResults: 12
   };
   const queryString = new URLSearchParams(params).toString();
   const requrl = `${searchUrl}?${queryString}`;
