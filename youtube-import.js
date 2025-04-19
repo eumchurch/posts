@@ -158,10 +158,18 @@ function getQts() {
           let publishedAt = snippet?.["publishedAt"];
           let youtube = snippet?.["resourceId"]?.["videoId"];
           
-          if (publishedAt) {
-            date = convertPostDate(publishedAt, false);
+          const year = new Date().getFullYear();
+
+          // 정규식을 이용해 월과 일을 추출
+          const match = title.match(/(\d{1,2})월\s+(\d{1,2})일/);
+          
+          if (match) {
+            const month = match[1].padStart(2, '0'); // 한 자리 수일 경우 0 추가
+            const day = match[2].padStart(2, '0');
+            const formattedDate = `${year}-${month}-${day}`;
+            console.log(formattedDate); // 예: 2025-04-04
           } else {
-            throw new Error("An error occured parsing qt date; " + publishedAt);
+            throw new Error("An error occured parsing youtube qt title date; " + title);
           }
           
           let array = title.split("(");
