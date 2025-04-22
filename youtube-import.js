@@ -152,25 +152,29 @@ function getQts() {
       for (const item of items) {
         let snippet = item?.["snippet"];
         if (snippet) {
-          
+
           var date = "";
           let title = snippet?.["title"];
           let publishedAt = snippet?.["publishedAt"];
           let youtube = snippet?.["resourceId"]?.["videoId"];
-          
+
           const year = new Date().getFullYear();
 
           // 정규식을 이용해 월과 일을 추출
           const match = title.match(/(\d{1,2})월\s+(\d{1,2})일/);
-          
+
           if (match) {
             const month = match[1].padStart(2, '0'); // 한 자리 수일 경우 0 추가
             const day = match[2].padStart(2, '0');
             const formattedDate = `${year}-${month}-${day}`;
             date = formattedDate;
           } else {
-            throw new Error("An error occured parsing youtube qt title date; " + title);
+            // 패턴에 맞지 않으면 skip (에러 없음)
+            console.log("unmatched title; "+title);
+            continue;
           }
+
+  
           
           let array = title.split("(");
           if (array.length == 2) {
