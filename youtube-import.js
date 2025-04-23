@@ -155,7 +155,7 @@ function getQts() {
 
           var date = "";
           let title = snippet?.["title"];
-          if title == "Private video" {
+          if (title == "Private video") {
             continue;
           }
           let publishedAt = snippet?.["publishedAt"];
