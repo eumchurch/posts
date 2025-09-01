@@ -23,8 +23,7 @@ jobs:
         run: |
           rm -rf _posts/introduction/*
           rm -rf _posts/ministry/*
-          rm -rf _posts/bulletin/*
-          rm -rf images/*
+          rm -rf images/posts/*
       
       - uses: actions/setup-node@v4
         with:

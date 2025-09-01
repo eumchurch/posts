@@ -17,7 +17,7 @@ function escapeCodeBlock(body) {
 }
 
 function saveImage(ftitle, index, url) {
-  const dirname = path.join("images", ftitle);
+  const dirname = path.join("images/posts", ftitle);
   if (!fs.existsSync(dirname)) {
     fs.mkdirSync(dirname, { recursive: true });
   }
@@ -43,9 +43,8 @@ const n2m = new NotionToMarkdown({ notionClient: notion });
 
 (async () => {
   // ensure directory exists
-  fs.mkdirSync("images", { recursive: true });
+  fs.mkdirSync("images/posts", { recursive: true });
   fs.mkdirSync("_posts/ministry", { recursive: true });
-  fs.mkdirSync("_posts/bulletin", { recursive: true });
   fs.mkdirSync("_posts/introduction", { recursive: true });
 
   const databaseId = process.env.DATABASE_ID;
