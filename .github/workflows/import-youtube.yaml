@@ -1,5 +1,6 @@
 name: "Import youtube"
-on: 
+on:
+  workflow_dispatch:
   push:
     branches:
       - main
